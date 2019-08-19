@@ -1,5 +1,14 @@
 .tr-body {
     height: calc(100vh - #{$tr-header-height});
+    transition: transform 0.2s ease-in-out;
     display: flex;
-    @include test(pink);
+}
+
+.tr-show-sidebar {
+    @include media-breakpoint-down(md) {
+        .tr-body {
+            display: flex;
+            transform: translateX($tr-sidebar-width);
+        }
+    }
 }

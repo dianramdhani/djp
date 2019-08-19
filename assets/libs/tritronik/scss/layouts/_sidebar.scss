@@ -1,8 +1,9 @@
 .tr-sidebar {
     width: $tr-sidebar-width;
-    // on init hide
-    margin-left: -$tr-sidebar-width;
-    // animate only margin-left
-    transition: margin-left 0.2s ease-in-out;
-    @include test(gray);
+    background-color: #fff;
+    border-right: $border-color;
+
+    @include media-breakpoint-down(md) {
+        margin-left: -$tr-sidebar-width;
+    }
 }
