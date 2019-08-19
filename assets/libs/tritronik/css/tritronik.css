@@ -1,0 +1,26 @@
+html,
+body {
+  height: 100%; }
+
+.tr-header {
+  height: 70px;
+  border-style: solid;
+  background-color: red; }
+
+.tr-body {
+  height: calc(100vh - 70px);
+  display: flex;
+  border-style: solid;
+  background-color: pink; }
+
+.tr-sidebar {
+  width: 300px;
+  margin-left: -300px;
+  transition: margin-left 0.2s ease-in-out;
+  border-style: solid;
+  background-color: gray; }
+
+.tr-content {
+  flex: 1;
+  border-style: solid;
+  background-color: brown; }

@@ -1,0 +1,5 @@
+.tr-body {
+    height: calc(100vh - #{$tr-header-height});
+    display: flex;
+    @include test(pink);
+}
