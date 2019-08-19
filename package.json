@@ -1,0 +1,22 @@
+{
+  "name": "djp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "node-sass --include-path scss assets/libs/tritronik/scss/tritronik.scss assets/libs/tritronik/css/tritronik.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+  },
+  "author": "Team BDA",
+  "license": "SEE LICENSE IN LICENSE",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "normalize.css": "^8.0.1",
+    "popper.js": "^1.15.0"
+  },
+  "devDependencies": {
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.19.1"
+  }
+}
