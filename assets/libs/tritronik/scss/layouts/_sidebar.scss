@@ -1,9 +1,0 @@
-.tr-sidebar {
-    width: $tr-sidebar-width;
-    background-color: #fff;
-    border-right: $border-color;
-
-    @include media-breakpoint-down(md) {
-        margin-left: -$tr-sidebar-width;
-    }
-}
