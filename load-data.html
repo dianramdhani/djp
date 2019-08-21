@@ -95,7 +95,7 @@
                 </div>
 
                 <div class="row row-xs">
-                    <div class="col-lg-6">
+                    <div class="col-lg-5">
                         <div class="card">
                             <div class="card-header pd-t-20 pd-b-0 bd-b-0">
                                 <h6>Upload a File</h6>
@@ -103,8 +103,8 @@
                             <div class="card-body">
                                 <form>
                                     <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Attachment</label>
-                                        <div class="col-sm-9">
+                                        <label class="col-sm-4 col-form-label pd-r-0">Attachment</label>
+                                        <div class="col-sm-8">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="customFile">
                                                 <label class="custom-file-label" for="customFile">Choose file</label>
@@ -112,8 +112,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="inputPassword3" class="col-sm-3 col-form-label">Comment</label>
-                                        <div class="col-sm-9">
+                                        <label for="inputPassword3"
+                                            class="col-sm-4 col-form-label pd-r-0">Comment</label>
+                                        <div class="col-sm-8">
                                             <textarea id="inputPassword3" class="form-control" rows="2"
                                                 placeholder="Comment"></textarea>
                                         </div>
@@ -123,51 +124,72 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 mg-t-10 mg-lg-t-0">
+                    <div class="col-lg-7 mg-t-10 mg-lg-t-0">
                         <div class="card">
-                            <div class="card-header pd-y-20 d-md-flex align-items-center justify-content-between">
-                                <h6 class="mg-b-0">Recurring Revenue Growth</h6>
-                                <ul class="list-inline d-flex mg-t-20 mg-sm-t-10 mg-md-t-0 mg-b-0">
-                                    <li class="list-inline-item d-flex align-items-center">
-                                        <span class="d-block wd-10 ht-10 bg-df-1 rounded mg-r-5"></span>
-                                        <span class="tx-sans tx-uppercase tx-10 tx-medium tx-color-03">Growth
-                                            Actual</span>
-                                    </li>
-                                    <li class="list-inline-item d-flex align-items-center mg-l-5">
-                                        <span class="d-block wd-10 ht-10 bg-df-2 rounded mg-r-5"></span>
-                                        <span class="tx-sans tx-uppercase tx-10 tx-medium tx-color-03">Actual</span>
-                                    </li>
-                                    <li class="list-inline-item d-flex align-items-center mg-l-5">
-                                        <span class="d-block wd-10 ht-10 bg-df-3 rounded mg-r-5"></span>
-                                        <span class="tx-sans tx-uppercase tx-10 tx-medium tx-color-03">Plan</span>
-                                    </li>
-                                </ul>
-                            </div><!-- card-header -->
-                            <div class="card-body pos-relative pd-0">
-                                <div class="pos-absolute t-20 l-20 wd-xl-100p z-index-10">
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                            <h3 class="tx-normal tx-rubik tx-spacing--2 mg-b-5">$620,076</h3>
-                                            <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-10">
-                                                MRR Growth</h6>
-                                            <p class="mg-b-0 tx-12 tx-color-03">Measure How Fast You’re Growing Monthly
-                                                Recurring Revenue. <a href="">Learn More</a></p>
-                                        </div><!-- col -->
-                                        <div class="col-sm-5 mg-t-20 mg-sm-t-0">
-                                            <h3 class="tx-normal tx-rubik tx-spacing--2 mg-b-5">$1,200</h3>
-                                            <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-10">
-                                                Avg. MRR/Customer</h6>
-                                            <p class="mg-b-0 tx-12 tx-color-03">The revenue generated per account on a
-                                                monthly or yearly basis. <a href="">Learn More</a></p>
-                                        </div><!-- col -->
-                                    </div><!-- row -->
-                                </div>
-
-                                <div class="chart-one">
-                                    <div id="flotChart" class="flot-chart"></div>
-                                </div><!-- chart-one -->
-                            </div><!-- card-body -->
-                        </div><!-- card -->
+                            <div class="card-header pd-t-20 pd-b-0 bd-b-0">
+                                <h6>List Files</h6>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-dashboard mg-t-10 mg-b-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th class="text-right">Sales Count</th>
+                                            <th class="text-right">Gross Earnings</th>
+                                            <th class="text-right">Tax Withheld</th>
+                                            <th class="text-right">Net Earnings</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="tx-color-03 tx-normal">03/05/2018</td>
+                                            <td class="tx-medium text-right">1,050</td>
+                                            <td class="text-right tx-teal">+ $32,580.00</td>
+                                            <td class="text-right tx-pink">- $3,023.10</td>
+                                            <td class="tx-medium text-right">$28,670.90 <span
+                                                    class="mg-l-5 tx-10 tx-normal tx-success"><i
+                                                        class="icon ion-md-arrow-up"></i> 4.5%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tx-color-03 tx-normal">03/04/2018</td>
+                                            <td class="tx-medium text-right">980</td>
+                                            <td class="text-right tx-teal">+ $30,065.10</td>
+                                            <td class="text-right tx-pink">- $2,780.00</td>
+                                            <td class="tx-medium text-right">$26,930.40 <span
+                                                    class="mg-l-5 tx-10 tx-normal tx-danger"><i
+                                                        class="icon ion-md-arrow-down"></i> 0.8%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tx-color-03 tx-normal">03/04/2018</td>
+                                            <td class="tx-medium text-right">980</td>
+                                            <td class="text-right tx-teal">+ $30,065.10</td>
+                                            <td class="text-right tx-pink">- $2,780.00</td>
+                                            <td class="tx-medium text-right">$26,930.40 <span
+                                                    class="mg-l-5 tx-10 tx-normal tx-danger"><i
+                                                        class="icon ion-md-arrow-down"></i> 0.8%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tx-color-03 tx-normal">03/04/2018</td>
+                                            <td class="tx-medium text-right">980</td>
+                                            <td class="text-right tx-teal">+ $30,065.10</td>
+                                            <td class="text-right tx-pink">- $2,780.00</td>
+                                            <td class="tx-medium text-right">$26,930.40 <span
+                                                    class="mg-l-5 tx-10 tx-normal tx-danger"><i
+                                                        class="icon ion-md-arrow-down"></i> 0.8%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tx-color-03 tx-normal">03/04/2018</td>
+                                            <td class="tx-medium text-right">980</td>
+                                            <td class="text-right tx-teal">+ $30,065.10</td>
+                                            <td class="text-right tx-pink">- $2,780.00</td>
+                                            <td class="tx-medium text-right">$26,930.40 <span
+                                                    class="mg-l-5 tx-10 tx-normal tx-danger"><i
+                                                        class="icon ion-md-arrow-down"></i> 0.8%</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div><!-- table-responsive -->
+                        </div>
                     </div>
                 </div><!-- row -->
             </div><!-- container -->
