@@ -8,31 +8,12 @@
     </div>
     <div class="aside-body">
         <ul class="nav nav-aside">
-            <li class="nav-item">
+            <li class="nav-label" ng-repeat-start="menu in $ctrl.menu.sidebar track by $index"
+                ng-if="($index === 0) && (menu.type === 'title')">{{menu.label}}</li>
+            <li class="nav-label mg-t-25" ng-if="($index !== 0) && (menu.type === 'title')">{{menu.label}}</li>
+            <li class="nav-item" ng-if="menu.type === 'link'" ng-class="{active: menu.active}" ng-repeat-end>
                 <a href="dashboard-one.html" class="nav-link">
-                    <i data-feather="monitor"></i> <span>Dashboard</span>
-                </a>
-            </li>
-            <li class="nav-item active">
-                <a href="dashboard-one.html" class="nav-link">
-                    <i data-feather="arrow-down-circle"></i> <span>Load Data</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="dashboard-one.html" class="nav-link">
-                    <i data-feather="shield"></i> <span>Cleansing Role</span>
-                </a>
-            </li>
-
-            <li class="nav-label mg-t-25">Master Data Management</li>
-            <li class="nav-item">
-                <a href="../../components" class="nav-link">
-                    <i data-feather="clock"></i> <span>History Data Processing</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="../../components" class="nav-link">
-                    <i data-feather="book"></i> <span>Activity List</span>
+                    <i data-feather="{{menu.icon}}"></i> <span>{{menu.label}}</span>
                 </a>
             </li>
         </ul>
