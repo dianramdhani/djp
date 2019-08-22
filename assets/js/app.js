@@ -17,3 +17,4 @@ require('../components/tr-wrapper/tr-wrapper');
 // VIEWS
 // require('../views/dashboard/dashboard');
 require('../views/load-data/load-data');
+require('../views/login/login');
