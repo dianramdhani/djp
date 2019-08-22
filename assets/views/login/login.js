@@ -18,7 +18,7 @@ require('./login.css');
         $ctrl.$onInit = () => { };
 
         $scope.login = () => {
-            $state.go('etlContainer');
+            $state.go('etl');
         };
     }
 })();

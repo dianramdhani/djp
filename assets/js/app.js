@@ -12,7 +12,7 @@ require('./config');
 
     Run.$inject = ['$state'];
     function Run($state) {
-        // $state.go('login');
+        $state.go('login');
     }
 })();
 
