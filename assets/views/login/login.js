@@ -12,9 +12,13 @@ require('./login.css');
             controller: _
         });
 
-    _.$inject = [];
-    function _() {
+    _.$inject = ['$scope', '$state'];
+    function _($scope, $state) {
         let $ctrl = this;
         $ctrl.$onInit = () => { };
+
+        $scope.login = () => {
+            $state.go('etlContainer');
+        };
     }
 })();
