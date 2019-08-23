@@ -1,3 +1,5 @@
+require('./proximity.css');
+
 (function () {
     'use strict';
 
@@ -10,9 +12,13 @@
             controller: _
         });
 
-    _.$inject = [];
-    function _() {
+    _.$inject = ['$scope'];
+    function _($scope) {
         let $ctrl = this;
         $ctrl.$onInit = () => { };
+
+        $scope.exactMatch = () => {
+            $scope.showExactMatch = true;
+        }
     }
 })();
