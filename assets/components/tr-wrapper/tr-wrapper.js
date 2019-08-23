@@ -15,14 +15,18 @@
             }
         });
 
-    _.$inject = ['$timeout', '$scope'];
-    function _($timeout, $scope) {
+    _.$inject = ['$timeout', '$scope', '$state'];
+    function _($timeout, $scope, $state) {
         let $ctrl = this;
         $ctrl.$onInit = () => {
-            console.log('menu', $ctrl.menu);
             $timeout(() => {
                 require('../../lib/dashforge/js/dashforge');
                 require('../../lib/dashforge/js/dashforge.aside');
+                angular.forEach($ctrl.menu.sidebar, (menu, index) => {
+                    if (menu.active) {
+                        $scope.goToState(index);
+                    }
+                });
             });
         };
 
@@ -35,10 +39,7 @@
                     menu.active = true;
                 }
             });
-            /**
-             * @todo 
-             * add state go
-             */
+            $state.go($ctrl.menu.sidebar[index].state.to, $ctrl.menu.sidebar[index].state.params);
         };
     }
 })();

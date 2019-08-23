@@ -18,6 +18,7 @@ require('./config');
 
 // ROUTES
 require('../routes/app.route');
+require('../routes/etl.route');
 
 // SERVICES
 
@@ -27,7 +28,7 @@ require('../routes/app.route');
 require('../components/tr-wrapper/tr-wrapper');
 
 // VIEWS
-// require('../views/dashboard/dashboard');
-require('../views/etl-container/etl-container');
-require('../views/load-data/load-data');
 require('../views/login/login');
+require('../views/etl-container/etl-container');
+require('../views/dashboard/dashboard');
+require('../views/load-data/load-data');

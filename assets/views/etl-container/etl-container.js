@@ -31,7 +31,7 @@
                         label: 'Dashboard',
                         icon: 'monitor',
                         state: {
-                            to: '',
+                            to: 'etl.dashboard',
                             params: {}
                         },
                         active: true
@@ -41,7 +41,7 @@
                         label: 'Load Data',
                         icon: 'arrow-down-circle',
                         state: {
-                            to: '',
+                            to: 'etl.loadData',
                             params: {}
                         },
                         active: false
