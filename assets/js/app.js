@@ -32,6 +32,7 @@ require('../views/login/login');
 require('../views/etl-container/etl-container');
 require('../views/dashboard/dashboard');
 require('../views/load-data/load-data');
+require('../views/proximity/proximity');
 require('../views/cleansing-role/cleansing-role');
 require('../views/history-data-processing/history-data-processing');
 require('../views/activity-list/activity-list');

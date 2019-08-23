@@ -10,6 +10,7 @@
         [
             { name: 'etl.dashboard', url: '/dashboard', component: 'dashboard' },
             { name: 'etl.loadData', url: '/load-data', component: 'loadData' },
+            { name: 'etl.proximity', url: '/load-data/proximity', component: 'proximity' },
             { name: 'etl.cleansingRole', url: '/cleansing-role', component: 'cleansingRole' },
             { name: 'etl.historyDataProcessing', url: '/history-data-processing', component: 'historyDataProcessing' },
             { name: 'etl.activityList', url: '/activity-list', component: 'activityList' },
