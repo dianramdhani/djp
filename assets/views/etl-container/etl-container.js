@@ -51,7 +51,7 @@
                         label: 'Cleansing Role',
                         icon: 'shield',
                         state: {
-                            to: '',
+                            to: 'etl.cleansingRole',
                             params: {}
                         },
                         active: false
@@ -65,7 +65,7 @@
                         label: 'History Data Processing',
                         icon: 'clock',
                         state: {
-                            to: '',
+                            to: 'etl.historyDataProcessing',
                             params: {}
                         },
                         active: false
@@ -75,7 +75,7 @@
                         label: 'Activity List',
                         icon: 'book',
                         state: {
-                            to: '',
+                            to: 'etl.activityList',
                             params: {}
                         },
                         active: false

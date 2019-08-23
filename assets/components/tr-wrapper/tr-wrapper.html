@@ -6,7 +6,7 @@
             <i data-feather="x"></i>
         </a>
     </div>
-    <div class="aside-body">
+    <div id="navbarMenu" class="aside-body">
         <ul class="nav nav-aside">
             <li class="nav-label" ng-repeat-start="menu in $ctrl.menu.sidebar track by $index"
                 ng-if="($index === 0) && (menu.type === 'title')">{{menu.label}}</li>
