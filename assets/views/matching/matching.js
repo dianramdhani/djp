@@ -2,11 +2,11 @@
     'use strict';
 
     // Usage:
-    // Proximity view.
+    // Matching form.
 
     window.app
-        .component('proximity', {
-            template: require('./proximity.html'),
+        .component('matching', {
+            template: require('./matching.html'),
             controller: _
         });
 

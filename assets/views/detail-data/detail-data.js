@@ -2,11 +2,13 @@
     'use strict';
 
     // Usage:
-    // Proximity view.
+    // Show detail data and list posible match.
+    // Creates:
+    // Call by proximity view.
 
     window.app
-        .component('proximity', {
-            template: require('./proximity.html'),
+        .component('detailData', {
+            template: require('./detail-data.html'),
             controller: _
         });
 
