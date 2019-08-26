@@ -3,6 +3,8 @@
 
     // Usage:
     // Matching form.
+    // Creates:
+    // Call by detail-data view.
 
     window.app
         .component('matching', {
