@@ -1,5 +1,5 @@
 <div class="card mg-t-10">
-    <h6 class="card-header mg-b-0 bd-b-0">Exact Match</h6>
+    <h6 class="card-header mg-b-0 bd-b-0">Report Matching</h6>
     <div class="table-responsive">
         <table class="table table-dashboard tr-table mg-b-0">
             <thead>
@@ -12,12 +12,8 @@
             <tbody>
                 <tr>
                     <th>Photo</th>
-                    <td>
-                        <input type="radio" name="photo"><img class="tr-photo" src="../../img/sample.jpg" alt="">
-                    </td>
-                    <td>
-                        <input type="radio" name="photo"><img class="tr-photo" src="../../img/sample.jpg" alt="">
-                    </td>
+                    <td><img class="tr-photo" src="../../img/sample.jpg" alt=""></td>
+                    <td><img class="tr-photo" src="../../img/sample.jpg" alt=""></td>
                 </tr>
                 <tr>
                     <th>NPWP</th>
@@ -67,7 +63,6 @@
         </table>
     </div>
     <div class="card-footer d-flex justify-content-center">
-        <button class="btn btn-primary tr-btn-form">Merge</button>
-        <button class="btn btn-danger tr-btn-form" ui-sref="etl.proximity.detailData">Cancel</button>
+        <button class="btn btn-primary tr-btn-form" ui-sref="etl.proximity.matching">Rematching</button>
     </div>
 </div>

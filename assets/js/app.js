@@ -21,6 +21,7 @@ require('../routes/app.route');
 require('../routes/etl.route');
 
 // SERVICES
+require('../services/file.service');
 
 // DIRECTIVES
 
@@ -34,6 +35,7 @@ require('../views/dashboard/dashboard');
 require('../views/load-data/load-data');
 require('../views/proximity/proximity');
 require('../views/detail-data/detail-data');
+require('../views/report-matching/report-matching');
 require('../views/matching/matching');
 require('../views/cleansing-role/cleansing-role');
 require('../views/history-data-processing/history-data-processing');

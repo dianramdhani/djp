@@ -13,6 +13,7 @@
             { name: 'etl.proximity', url: '/load-data/proximity', component: 'proximity' },
             { name: 'etl.proximity.detailData', component: 'detailData' },
             { name: 'etl.proximity.matching', component: 'matching' },
+            { name: 'etl.proximity.reportMatching', component: 'reportMatching' },
             { name: 'etl.cleansingRole', url: '/cleansing-role', component: 'cleansingRole' },
             { name: 'etl.historyDataProcessing', url: '/history-data-processing', component: 'historyDataProcessing' },
             { name: 'etl.activityList', url: '/activity-list', component: 'activityList' },

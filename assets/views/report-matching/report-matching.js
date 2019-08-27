@@ -1,16 +1,14 @@
-require('./matching.css');
-
 (function () {
     'use strict';
 
     // Usage:
-    // Matching form.
+    // Show result matching.
     // Creates:
-    // Call by detail-data view.
+    // Call by proximty view.
 
     window.app
-        .component('matching', {
-            template: require('./matching.html'),
+        .component('reportMatching', {
+            template: require('./report-matching.html'),
             controller: _
         });
 

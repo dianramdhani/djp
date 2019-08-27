@@ -15,27 +15,32 @@
         <span class="tx-13 link-03">File Name: testing_Jakarta.xls</span>
     </div>
     <div class="table-responsive">
-        <table class="table table-hover table-dashboard mg-t-10 mg-b-0">
+        <table class="table table-dashboard mg-t-10 mg-b-0">
             <thead>
                 <tr>
                     <th>NPWP</th>
                     <th>KTP</th>
                     <th>Full Name</th>
                     <th>Place and Date of Birth</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ui-sref="etl.proximity.detailData">
+                <tr>
                     <td>99.123.456.7-890.999</td>
                     <td>10 50 24 570890 0001</td>
                     <td>Muhammad Rizal</td>
                     <td>Bandung, 01 Maret 1995</td>
+                    <td><button class="btn btn-primary tr-btn-table"
+                            ui-sref="etl.proximity.reportMatching">Processed</button></td>
                 </tr>
                 <tr>
                     <td>99.123.456.7-890.999</td>
                     <td>10 50 24 570890 0001</td>
                     <td>Muhammad Rizal</td>
                     <td>Bandung, 01 Maret 1995</td>
+                    <td><button class="btn btn-warning tr-btn-table"
+                            ui-sref="etl.proximity.detailData">Unprocessed</button></td>
                 </tr>
             </tbody>
         </table>
