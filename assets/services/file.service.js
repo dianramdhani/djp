@@ -7,6 +7,7 @@
     FileService.$inject = ['$http', 'CONFIG'];
     function FileService($http, CONFIG) {
         this.searchUrl = searchUrl;
+        this.retrieve = retrieve;
         this.retrieveRecords = retrieveRecords;
 
         const url = `${CONFIG.serviceAddress}:${CONFIG.servicePort}`
@@ -16,6 +17,14 @@
          */
         function searchUrl() {
             return `${url}/file/search`;
+        }
+
+        /**
+         * Get detail file.
+         * @param {String} id - Id file.
+         */
+        function retrieve(id) {
+            return $http.get(`${url}/file/${id}`);
         }
 
         /**
