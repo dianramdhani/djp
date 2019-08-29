@@ -14,14 +14,14 @@
     function _($stateParams, $scope, $compile, DTOptionsBuilder, DTColumnBuilder, FileService) {
         let $ctrl = this;
         $ctrl.$onInit = () => {
-            FileService.retrieve($stateParams.id)
+            FileService.retrieve($stateParams.idFile)
                 .then(({ data }) => {
                     $scope.filename = data.filename;
                 });
 
             $scope.dtOptions = DTOptionsBuilder
                 .fromFnPromise(() => {
-                    return FileService.retrieveRecords($stateParams.id).then(_ => _.data);
+                    return FileService.retrieveRecords($stateParams.idFile).then(_ => _.data);
                 })
                 .withOption('lengthMenu', [5, 10, 20])
                 .withOption('createdRow', (row, _, __) => { $compile(angular.element(row).contents())($scope); })
@@ -36,7 +36,7 @@
                 DTColumnBuilder.newColumn(null).withTitle('').notSortable()
                     .renderWith((data, _, __, ___) => {
                         return `
-                        <button class="btn btn-warning tr-btn-table" ng-if="${data.status === 'Matched' ? "true" : "false"}" ui-sref="etl.proximity.detailData">Unprocessed</button>
+                        <button class="btn btn-warning tr-btn-table" ng-if="${data.status === 'Matched' ? "true" : "false"}" ui-sref="etl.proximity.detailData({id: '${data.id}'})">Unprocessed</button>
                         <button class="btn btn-primary tr-btn-table" ng-if="${data.status === 'Completed' ? "true" : "false"}" ui-sref="etl.proximity.reportMatching">Processed</button>
                         `;
                     })

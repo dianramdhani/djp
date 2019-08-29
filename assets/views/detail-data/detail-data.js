@@ -12,9 +12,11 @@
             controller: _
         });
 
-    _.$inject = [];
-    function _() {
+    _.$inject = ['$stateParams'];
+    function _($stateParams) {
         let $ctrl = this;
-        $ctrl.$onInit = () => { };
+        $ctrl.$onInit = () => {
+            console.log($stateParams);
+        };
     }
 })();

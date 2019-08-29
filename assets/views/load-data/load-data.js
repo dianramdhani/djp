@@ -52,7 +52,7 @@
                 DTColumnBuilder.newColumn('status').withTitle('Status'),
                 DTColumnBuilder.newColumn(null).withTitle('').notSortable()
                     .renderWith((data, _, __, ___) => {
-                        return `<button class="btn btn-primary tr-btn-table" ui-sref="etl.proximity({id: '${data.id}'})">Show File</button>`;
+                        return `<button class="btn btn-primary tr-btn-table" ui-sref="etl.proximity({idFile: '${data.id}'})">Show File</button>`;
                     })
             ];
         };
