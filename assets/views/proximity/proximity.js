@@ -36,7 +36,7 @@
                 DTColumnBuilder.newColumn(null).withTitle('').notSortable()
                     .renderWith((data, _, __, ___) => {
                         return `
-                        <button class="btn btn-warning tr-btn-table" ng-if="${data.status === 'Matched' ? "true" : "false"}" ui-sref="etl.proximity.detailData({id: '${data.id}'})">Unprocessed</button>
+                        <button class="btn btn-warning tr-btn-table" ng-if="${data.status === 'Matched' ? "true" : "false"}" ui-sref="etl.proximity.detailData({idUnprocessed: '${data.id}'})">Unprocessed</button>
                         <button class="btn btn-primary tr-btn-table" ng-if="${data.status === 'Completed' ? "true" : "false"}" ui-sref="etl.proximity.reportMatching">Processed</button>
                         `;
                     })

@@ -12,11 +12,13 @@
             controller: _
         });
 
-    _.$inject = ['$stateParams'];
-    function _($stateParams) {
+    _.$inject = ['$stateParams', '$scope', 'PersonService'];
+    function _($stateParams, $scope, PersonService) {
         let $ctrl = this;
-        $ctrl.$onInit = () => {
-            console.log($stateParams);
+        $ctrl.$onInit = async () => {
+            $scope.data = await PersonService.findById($stateParams.idUnprocessed).then(_ => _.data);
+            $scope.$apply();
+            console.log($scope.data);
         };
     }
 })();

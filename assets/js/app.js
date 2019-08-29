@@ -22,6 +22,7 @@ require('../routes/etl.route');
 
 // SERVICES
 require('../services/file.service');
+require('../services/person.service');
 
 // DIRECTIVES
 
