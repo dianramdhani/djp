@@ -2,9 +2,7 @@
     'use strict';
 
     // Usage:
-    // 
-    // Creates:
-    // 
+    // Load data view.
 
     window.app
         .component('loadData', {
@@ -12,13 +10,13 @@
             controller: _
         });
 
-    _.$inject = ['$scope', '$state', 'DTOptionsBuilder', 'DTColumnBuilder'];
-    function _($scope, $state, DTOptionsBuilder, DTColumnBuilder) {
+    _.$inject = ['$scope', '$state', '$compile', 'DTOptionsBuilder', 'DTColumnBuilder', 'FileService'];
+    function _($scope, $state, $compile, DTOptionsBuilder, DTColumnBuilder, FileService) {
         let $ctrl = this;
         $ctrl.$onInit = () => {
             $scope.dtOptions = DTOptionsBuilder.newOptions()
                 .withOption('ajax', {
-                    url: 'http://cra.tritronik.com:8081/file/search',
+                    url: FileService.searchUrl(),
                     dataFilter: (data) => {
                         data = angular.fromJson(data);
                         return angular.toJson({
@@ -44,6 +42,7 @@
                 .withOption('processing', true)
                 .withOption('serverSide', true)
                 .withOption('lengthMenu', [5, 10, 20])
+                .withOption('createdRow', (row, _, __) => { $compile(angular.element(row).contents())($scope); })
                 .withOption('language', { search: 'File Search' })
                 .withPaginationType('simple_numbers');
             $scope.dtColumns = [
@@ -51,6 +50,10 @@
                 DTColumnBuilder.newColumn('filename').withTitle('File Name'),
                 DTColumnBuilder.newColumn('size').withTitle('Size (byte)'),
                 DTColumnBuilder.newColumn('status').withTitle('Status'),
+                DTColumnBuilder.newColumn(null).withTitle('').notSortable()
+                    .renderWith((data, _, __, ___) => {
+                        return `<button class="btn btn-primary tr-btn-table" ui-sref="etl.proximity({id: '${data.id}'})">Show File</button>`;
+                    })
             ];
         };
 

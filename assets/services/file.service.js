@@ -6,17 +6,24 @@
 
     FileService.$inject = ['$http', 'CONFIG'];
     function FileService($http, CONFIG) {
-        this.search = search;
+        this.searchUrl = searchUrl;
+        this.retrieveRecords = retrieveRecords;
 
         const url = `${CONFIG.serviceAddress}:${CONFIG.servicePort}`
 
         /**
          * Search file/s.
-         * @param {Object} arg - Argument consists of filename (String), sortBy (String), sortOrder (Number), page (Number), limit (Number).
          */
-        function search() {
-            // return $http.get(`${url}/file/search`, arg);
-            return $http.get('http://192.168.11.88:8081/file/search');
+        function searchUrl() {
+            return `${url}/file/search`;
+        }
+
+        /**
+         * Show records inside file.
+         * @param {String} id - Id file.
+         */
+        function retrieveRecords(id) {
+            return $http.get(`${url}/file/${id}/records`);
         }
     }
 })();
