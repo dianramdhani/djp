@@ -19,27 +19,27 @@
                         <img class="tr-photo" src="../../img/sample.jpg" alt="">
                     </td>
                 </tr>
-                <tr>
+                <tr ng-class="{'table-danger': notEquals(data['NPWP'], dataMaster.npwp)}">
                     <th>NPWP</th>
                     <td>{{data['NPWP']}}</td>
                     <td>{{dataMaster.npwp}}</td>
                 </tr>
-                <tr>
+                <tr ng-class="{'table-danger': notEquals(data['Full Name'], dataMaster.name)}">
                     <th>Full Name</th>
                     <td>{{data['Full Name']}}</td>
                     <td>{{dataMaster.name}}</td>
                 </tr>
-                <tr>
+                <tr ng-class="{'table-danger': notEquals(data['Place of Birth'], dataMaster.placeOfBirth)}">
                     <th>Place of Birth</th>
                     <td>{{data['Place of Birth']}}</td>
                     <td>{{dataMaster.placeOfBirth}}</td>
                 </tr>
-                <tr>
+                <tr ng-class="{'table-danger': notEquals(data['Date of Birth'], dataMaster.dateOfBirth)}">
                     <th>Date of Birth</th>
                     <td>{{data['Date of Birth']}}</td>
                     <td>{{dataMaster.dateOfBirth}}</td>
                 </tr>
-                <tr>
+                <tr ng-class="{'table-danger': notEquals(data['Full Address'], dataMaster.address)}">
                     <th>Address</th>
                     <td>{{data['Full Address']}}</td>
                     <td>{{dataMaster.address}}</td>

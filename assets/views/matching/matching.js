@@ -22,5 +22,7 @@ require('./matching.css');
             $scope.dataMaster = angular.fromJson($stateParams.dataMaster);
             console.log($scope.data, $scope.dataMaster);
         };
+
+        $scope.notEquals = (a, b) => !angular.equals(a, b);
     }
 })();
