@@ -12,15 +12,15 @@
             controller: _
         });
 
-    _.$inject = ['$stateParams', '$scope', '$compile', '$q', 'PersonService', 'DTOptionsBuilder', 'DTColumnBuilder'];
-    function _($stateParams, $scope, $compile, $q, PersonService, DTOptionsBuilder, DTColumnBuilder) {
+    _.$inject = ['$stateParams', '$scope', '$compile', '$q', '$state', 'PersonService', 'DTOptionsBuilder', 'DTColumnBuilder'];
+    function _($stateParams, $scope, $compile, $q, $state, PersonService, DTOptionsBuilder, DTColumnBuilder) {
         const initTable = () => {
             $scope.dtOptions = DTOptionsBuilder
                 .fromFnPromise(() => {
                     let q = $q.defer();
                     PersonService.findProximityPersonByPersonId($stateParams.idUnprocessed).then(({ data }) => {
-                        console.log(data);
-                        q.resolve(angular.fromJson(data.content[0].solrMatcher));
+                        $scope.dataMaster = angular.fromJson(data.content[0].solrMatcher);
+                        q.resolve($scope.dataMaster);
                     });
                     return q.promise;
                 })
@@ -31,7 +31,6 @@
             $scope.dtColumns = [
                 DTColumnBuilder.newColumn('score').withTitle('Score').withClass('wd-100')
                     .renderWith((data, _, __, ___) => {
-                        console.log(data);
                         return `
                         <div class="progress ht-20">
                             <div class="progress-bar tx-10" role="progressbar" aria-valuenow="${data}" aria-valuemin="0" aria-valuemax="100" style="width: ${data}%">${data}%</div>
@@ -45,7 +44,7 @@
                 DTColumnBuilder.newColumn('address').withTitle('Address').withOption('defaultContent', '').withClass('wd-200'),
                 DTColumnBuilder.newColumn(null).withTitle('').notSortable().withClass('wd-60')
                     .renderWith((data, _, __, ___) => {
-                        return `<button class="btn btn-primary tr-btn-table">Matching</button>`;
+                        return `<button class="btn btn-primary tr-btn-table" ng-click="matching('${data.id}')">Matching</button>`;
                     })
             ];
         };
@@ -54,6 +53,11 @@
         $ctrl.$onInit = () => {
             initTable();
             PersonService.findById($stateParams.idUnprocessed).then(({ data }) => { $scope.data = data; });
+        };
+
+        $scope.matching = (idDataMaster) => {
+            let dataMaster = $scope.dataMaster.map(_ => _.id === idDataMaster ? _ : false)[0];
+            $state.go('etl.proximity.matching', { data: angular.toJson($scope.data), dataMaster: angular.toJson(dataMaster) });
         };
     }
 })();

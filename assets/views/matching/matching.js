@@ -14,9 +14,13 @@ require('./matching.css');
             controller: _
         });
 
-    _.$inject = [];
-    function _() {
+    _.$inject = ['$stateParams', '$scope'];
+    function _($stateParams, $scope) {
         let $ctrl = this;
-        $ctrl.$onInit = () => { };
+        $ctrl.$onInit = () => {
+            $scope.data = angular.fromJson($stateParams.data);
+            $scope.dataMaster = angular.fromJson($stateParams.dataMaster);
+            console.log($scope.data, $scope.dataMaster);
+        };
     }
 })();
