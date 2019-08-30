@@ -15,8 +15,6 @@
     _.$inject = ['$stateParams', '$scope', '$compile', '$q', '$state', '$element', 'PersonService', 'DTOptionsBuilder', 'DTColumnBuilder'];
     function _($stateParams, $scope, $compile, $q, $state, $element, PersonService, DTOptionsBuilder, DTColumnBuilder) {
         const initTable = () => {
-            angular.element('.content-body').animate({ scrollTop: $element.offset().top }, 350);
-
             $scope.dtOptions = DTOptionsBuilder
                 .fromFnPromise(() => {
                     let q = $q.defer();
@@ -53,6 +51,7 @@
 
         let $ctrl = this;
         $ctrl.$onInit = () => {
+            angular.element('.content-body').animate({ scrollTop: $element.offset().top }, 350);
             initTable();
             PersonService.findById($stateParams.idUnprocessed).then(({ data }) => { $scope.data = data; });
         };
