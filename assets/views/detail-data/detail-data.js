@@ -12,9 +12,11 @@
             controller: _
         });
 
-    _.$inject = ['$stateParams', '$scope', '$compile', '$q', '$state', 'PersonService', 'DTOptionsBuilder', 'DTColumnBuilder'];
-    function _($stateParams, $scope, $compile, $q, $state, PersonService, DTOptionsBuilder, DTColumnBuilder) {
+    _.$inject = ['$stateParams', '$scope', '$compile', '$q', '$state', '$element', 'PersonService', 'DTOptionsBuilder', 'DTColumnBuilder'];
+    function _($stateParams, $scope, $compile, $q, $state, $element, PersonService, DTOptionsBuilder, DTColumnBuilder) {
         const initTable = () => {
+            angular.element('.content-body').animate({ scrollTop: $element.offset().top }, 350);
+
             $scope.dtOptions = DTOptionsBuilder
                 .fromFnPromise(() => {
                     let q = $q.defer();
