@@ -6,7 +6,7 @@
 
     FileService.$inject = ['$http', 'CONFIG'];
     function FileService($http, CONFIG) {
-        this.searchUrl = searchUrl;
+        this.urlSearch = urlSearch;
         this.retrieve = retrieve;
         this.retrieveRecords = retrieveRecords;
 
@@ -15,7 +15,7 @@
         /**
          * Search file/s.
          */
-        function searchUrl() {
+        function urlSearch() {
             return `${url}/file/search`;
         }
 

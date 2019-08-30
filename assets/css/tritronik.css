@@ -44,3 +44,14 @@ body {
 .table-hover {
     cursor: pointer;
 }
+
+.tr-fixed-table {
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+
+.tr-fixed-table td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

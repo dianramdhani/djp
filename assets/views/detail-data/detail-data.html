@@ -44,35 +44,10 @@
         </div>
         <div class="col-lg-8 col-xl-9 mg-t-10 mg-lg-t-0">
             <div class="card">
-                <div class="card-header d-sm-flex align-items-start justify-content-between pd-b-0 bd-b-0">
-                    <h6 class="lh-5 mg-b-0 tx-gray-500">List Possible Match</h6>
-                    <span class="tx-13 link-03">File Name: testing_Jakarta.xls</span>
-                </div>
+                <h6 class="card-header bd-b-0 tx-gray-500">List Possible Match</h6>
                 <div class="table-responsive">
-                    <table class="table table-dashboard table-hover mg-t-10 mg-b-0">
-                        <thead>
-                            <tr>
-                                <th>NPWP</th>
-                                <th>KTP</th>
-                                <th>Full Name</th>
-                                <th>Place and Date of Birth</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ui-sref="etl.proximity.matching">
-                                <td>99.123.456.7-890.999</td>
-                                <td>10 50 24 570890 0001</td>
-                                <td>Muhammad Rizal</td>
-                                <td>Bandung, 01 Maret 1995</td>
-                            </tr>
-                            <tr ui-sref="etl.proximity.matching">
-                                <td>99.123.456.7-890.999</td>
-                                <td>10 50 24 570890 0001</td>
-                                <td>Muhammad Rizal</td>
-                                <td>Bandung, 01 Maret 1995</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <table class="table table-dashboard mg-t-10 mg-b-0 tr-fixed-table" datatable=""
+                        dt-options="dtOptions" dt-columns="dtColumns"></table>
                 </div>
             </div>
         </div>

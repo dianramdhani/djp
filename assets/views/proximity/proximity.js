@@ -27,13 +27,13 @@
                 .withOption('createdRow', (row, _, __) => { $compile(angular.element(row).contents())($scope); })
                 .withPaginationType('simple_numbers');
             $scope.dtColumns = [
-                DTColumnBuilder.newColumn('NPWP').withTitle('NPWP'),
-                DTColumnBuilder.newColumn('NIK').withTitle('NIK'),
-                DTColumnBuilder.newColumn('Full Name').withTitle('Full Name'),
-                DTColumnBuilder.newColumn('Place of Birth').withTitle('Place of Birth'),
-                DTColumnBuilder.newColumn('Date of Birth').withTitle('Date of Birth'),
-                DTColumnBuilder.newColumn('Full Address').withTitle('Full Address'),
-                DTColumnBuilder.newColumn(null).withTitle('').notSortable()
+                DTColumnBuilder.newColumn('NPWP').withTitle('NPWP').withClass('wd-150'),
+                DTColumnBuilder.newColumn('NIK').withTitle('NIK').withClass('wd-150'),
+                DTColumnBuilder.newColumn('Full Name').withTitle('Full Name').withClass('wd-150'),
+                DTColumnBuilder.newColumn('Place of Birth').withTitle('Place of Birth').withClass('wd-150'),
+                DTColumnBuilder.newColumn('Date of Birth').withTitle('Date of Birth').withClass('wd-150'),
+                DTColumnBuilder.newColumn('Full Address').withTitle('Full Address').withClass('wd-200'),
+                DTColumnBuilder.newColumn(null).withTitle('').notSortable().withClass('wd-100')
                     .renderWith((data, _, __, ___) => {
                         return `
                         <button class="btn btn-warning tr-btn-table" ng-if="${data.status === 'Matched' ? "true" : "false"}" ui-sref="etl.proximity.detailData({idUnprocessed: '${data.id}'})">Unprocessed</button>

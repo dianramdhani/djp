@@ -16,7 +16,7 @@
         $ctrl.$onInit = () => {
             $scope.dtOptions = DTOptionsBuilder.newOptions()
                 .withOption('ajax', {
-                    url: FileService.searchUrl(),
+                    url: FileService.urlSearch(),
                     dataFilter: (data) => {
                         data = angular.fromJson(data);
                         return angular.toJson({
