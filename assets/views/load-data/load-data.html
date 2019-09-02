@@ -14,25 +14,36 @@
                 <h6>Upload a File</h6>
             </div>
             <div class="card-body">
-                <form>
-                    <div class="form-group row">
-                        <label class="col-sm-4 col-form-label pd-r-0">Attachment</label>
-                        <div class="col-sm-8">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFile">
-                                <label class="custom-file-label" for="customFile">Choose file</label>
-                            </div>
+                <div class="row">
+                    <label class="col-sm-4 col-form-label pd-r-0 tx-gray-500">Attachment</label>
+                    <div class="col-sm-8">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile" multiple="multiple"
+                                ng-model="files" tr-files>
+                            <label class="custom-file-label tr-custom-file-label" for="customFile">Choose file</label>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-4 col-form-label pd-r-0">Comment</label>
-                        <div class="col-sm-8">
-                            <textarea id="inputPassword3" class="form-control" rows="2"
-                                placeholder="Comment"></textarea>
-                        </div>
+                </div>
+                <div class="pd-t-15" ng-if="files">
+                    <label class="tx-gray-500">List Files</label>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th class="tx-right">Size (Byte)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="file in files">
+                                    <td>{{file.name}}</td>
+                                    <td class="tx-right">{{file.size}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <button type="submit" class="btn btn-primary tr-btn-form">Upload</button>
-                </form>
+                    <button class="btn btn-primary tr-btn-form pd-t-15" ng-click="upload()">Upload</button>
+                </div>
             </div>
         </div>
     </div>

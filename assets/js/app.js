@@ -25,6 +25,7 @@ require('../services/file.service');
 require('../services/person.service');
 
 // DIRECTIVES
+require('../directives/tr-files.directive');
 
 // COMPONENTS
 require('../components/tr-wrapper/tr-wrapper');

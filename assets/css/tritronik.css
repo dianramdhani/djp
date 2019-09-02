@@ -55,3 +55,8 @@ body {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.tr-custom-file-label {
+    white-space: nowrap;
+    overflow: hidden;
+}
