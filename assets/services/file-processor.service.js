@@ -9,6 +9,7 @@
         this.urlSearch = urlSearch;
         this.retrieve = retrieve;
         this.retrieveRecords = retrieveRecords;
+        this.uploadFile = uploadFile;
 
         const url = `${CONFIG.serviceAddress}:${CONFIG.servicePort}`
 
@@ -33,6 +34,19 @@
          */
         function retrieveRecords(id) {
             return $http.get(`${url}/file/${id}/records`);
+        }
+
+        /**
+         * Upload file.
+         * @param {File} file - File xls|csv|txt|etc.
+         */
+        function uploadFile(file) {
+            let fd = new FormData();
+            fd.append('file', file);
+            return $http.post(`${url}/file/uploadFile`, fd, {
+                transformResponse: angular.identity,
+                headers: { 'Content-Type': undefined }
+            });
         }
     }
 })();

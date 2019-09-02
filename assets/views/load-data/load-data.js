@@ -10,10 +10,9 @@
             controller: _
         });
 
-    _.$inject = ['$scope', '$state', '$compile', 'DTOptionsBuilder', 'DTColumnBuilder', 'FileProcessorService', 'ExcelRuleService'];
-    function _($scope, $state, $compile, DTOptionsBuilder, DTColumnBuilder, FileProcessorService, ExcelRuleService) {
-        let $ctrl = this;
-        $ctrl.$onInit = () => {
+    _.$inject = ['$scope', '$state', '$compile', '$element', 'DTOptionsBuilder', 'DTColumnBuilder', 'FileProcessorService'];
+    function _($scope, $state, $compile, $element, DTOptionsBuilder, DTColumnBuilder, FileProcessorService) {
+        const refreshData = () => {
             $scope.dtOptions = DTOptionsBuilder.newOptions()
                 .withOption('ajax', {
                     url: FileProcessorService.urlSearch(),
@@ -55,6 +54,12 @@
                         return `<button class="btn btn-primary tr-btn-table" ui-sref="etl.proximity({idFile: '${data.id}'})">Show File</button>`;
                     })
             ];
+
+        };
+        let $ctrl = this;
+        $ctrl.$onInit = () => {
+            console.log($element);
+            refreshData();
         };
 
         $scope.showData = () => {
@@ -63,9 +68,15 @@
 
         $scope.upload = async () => {
             for (const i in $scope.files) {
-                let res = await ExcelRuleService.process($scope.files[i]);
+                let res = await FileProcessorService.uploadFile($scope.files[i]);
                 console.log(res);
             }
+            refreshData();
+            angular.element('.content-body').animate({ scrollTop: $element.find('table').offset().top }, 350);
+            /**
+             * @todo
+             * add loading
+             */
         }
     }
 })();
