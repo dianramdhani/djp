@@ -1,0 +1,106 @@
+{
+    "content": [
+        {
+            "id": "284bd12e-9674-4265-9361-15e11d96c404",
+            "location": "./file/284bd12e-9674-4265-9361-15e11d96c404",
+            "filename": "SampleData1.xlsx",
+            "uploadDate": "2019-08-23T11:15:03.000+0000",
+            "size": 9744,
+            "totalRecords": 8,
+            "processedRecords": 0,
+            "mergedRecords": 0,
+            "status": "Processed"
+        },
+        {
+            "id": "d8642805-d7cf-434c-92bb-6a276c071dca",
+            "location": "./file/d8642805-d7cf-434c-92bb-6a276c071dca",
+            "filename": "SampleData1.xlsx",
+            "uploadDate": "2019-08-23T11:12:43.000+0000",
+            "size": 9744,
+            "totalRecords": 8,
+            "processedRecords": 0,
+            "mergedRecords": 0,
+            "status": "Processed"
+        },
+        {
+            "id": "e5e2ac55-55ef-45ba-9adc-e98451a3c741",
+            "location": "./file/e5e2ac55-55ef-45ba-9adc-e98451a3c741",
+            "filename": "sample1.mdb",
+            "uploadDate": "2019-08-23T09:54:40.000+0000",
+            "size": 319488,
+            "totalRecords": 8,
+            "processedRecords": 0,
+            "mergedRecords": 0,
+            "status": "Processed"
+        },
+        {
+            "id": "0f141b35-25d1-450c-bf93-90ae708a8fb1",
+            "location": "./file/0f141b35-25d1-450c-bf93-90ae708a8fb1",
+            "filename": "sample1.accdb",
+            "uploadDate": "2019-08-23T09:52:02.000+0000",
+            "size": 290816,
+            "totalRecords": 8,
+            "processedRecords": 0,
+            "mergedRecords": 0,
+            "status": "Processed"
+        },
+        {
+            "id": "f23aba71-26a0-47c4-b2d5-aef3f5eb6b34",
+            "location": "./file/f23aba71-26a0-47c4-b2d5-aef3f5eb6b34",
+            "filename": "SampleData1 - titikKoma.csv",
+            "uploadDate": "2019-08-23T09:35:30.000+0000",
+            "size": 768,
+            "totalRecords": 8,
+            "processedRecords": 0,
+            "mergedRecords": 0,
+            "status": "Processed"
+        },
+        {
+            "id": "56f2f853-8cf8-455c-8b7e-4d60e92f4e59",
+            "location": "./file/56f2f853-8cf8-455c-8b7e-4d60e92f4e59",
+            "filename": "SampleData1 - titikKoma.csv",
+            "uploadDate": "2019-08-23T09:08:42.000+0000",
+            "size": 768,
+            "totalRecords": 8,
+            "processedRecords": 0,
+            "mergedRecords": 0,
+            "status": "Processed"
+        },
+        {
+            "id": "87c630a7-df7d-43f6-88d3-36ba7a1d6042",
+            "location": "./file/87c630a7-df7d-43f6-88d3-36ba7a1d6042",
+            "filename": "SampleData1 - titikKoma.csv",
+            "uploadDate": "2019-08-23T09:06:33.000+0000",
+            "size": 768,
+            "totalRecords": 8,
+            "processedRecords": 0,
+            "mergedRecords": 0,
+            "status": "Processed"
+        }
+    ],
+    "pageable": {
+        "sort": {
+            "sorted": true,
+            "unsorted": false,
+            "empty": false
+        },
+        "pageSize": 10,
+        "pageNumber": 0,
+        "offset": 0,
+        "unpaged": false,
+        "paged": true
+    },
+    "totalPages": 1,
+    "totalElements": 7,
+    "last": true,
+    "first": true,
+    "sort": {
+        "sorted": true,
+        "unsorted": false,
+        "empty": false
+    },
+    "numberOfElements": 7,
+    "size": 10,
+    "number": 0,
+    "empty": false
+}

@@ -1,0 +1,26 @@
+<div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+    <h4 class="mg-b-0 tx-spacing--1">Proximity</h4>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+            <li class="breadcrumb-item">Home</li>
+            <li class="breadcrumb-item"><a ui-sref="etl.loadData">Load Data</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Proximity</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="card">
+    <div class="card-header d-sm-flex align-items-start justify-content-between pd-b-0 bd-b-0">
+        <h6 class="lh-5 mg-b-0">List Data</h6>
+        <span class="tx-13 link-03">File Name: {{filename}}</span>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-dashboard mg-t-10 mg-b-0 tr-fixed-table" datatable="" dt-options="dtOptions"
+                dt-columns="dtColumns">
+            </table>
+        </div>
+    </div>
+</div>
+
+<div ui-view></div>

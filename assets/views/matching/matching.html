@@ -1,0 +1,55 @@
+<div class="card mg-t-10">
+    <h6 class="card-header mg-b-0 bd-b-0">Exact Match</h6>
+    <div class="table-responsive">
+        <table class="table table-dashboard tr-table mg-b-0">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Data Upload</th>
+                    <th>Master Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Photo</th>
+                    <td>
+                        <img class="tr-photo" src="../../img/sample.jpg" alt="">
+                    </td>
+                    <td>
+                        <img class="tr-photo" src="../../img/sample.jpg" alt="">
+                    </td>
+                </tr>
+                <tr ng-class="{'table-danger': notEquals(data['NPWP'], dataMaster.npwp)}">
+                    <th>NPWP</th>
+                    <td>{{data['NPWP']}}</td>
+                    <td>{{dataMaster.npwp}}</td>
+                </tr>
+                <tr ng-class="{'table-danger': notEquals(data['Full Name'], dataMaster.name)}">
+                    <th>Full Name</th>
+                    <td>{{data['Full Name']}}</td>
+                    <td>{{dataMaster.name}}</td>
+                </tr>
+                <tr ng-class="{'table-danger': notEquals(data['Place of Birth'], dataMaster.placeOfBirth)}">
+                    <th>Place of Birth</th>
+                    <td>{{data['Place of Birth']}}</td>
+                    <td>{{dataMaster.placeOfBirth}}</td>
+                </tr>
+                <tr ng-class="{'table-danger': notEquals(data['Date of Birth'], dataMaster.dateOfBirth)}">
+                    <th>Date of Birth</th>
+                    <td>{{data['Date of Birth']}}</td>
+                    <td>{{dataMaster.dateOfBirth}}</td>
+                </tr>
+                <tr ng-class="{'table-danger': notEquals(data['Full Address'], dataMaster.address)}">
+                    <th>Address</th>
+                    <td>{{data['Full Address']}}</td>
+                    <td>{{dataMaster.address}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer d-flex justify-content-center">
+        <button class="btn btn-primary tr-btn-form">Merge</button>
+        <button class="btn btn-danger tr-btn-form"
+            ui-sref="etl.proximity.detailData({idUnprocessed: data.id})">Cancel</button>
+    </div>
+</div>
