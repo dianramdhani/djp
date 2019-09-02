@@ -2,10 +2,10 @@
     'use strict';
 
     window.app
-        .service('FileService', FileService);
+        .service('FileProcessorService', FileProcessorService);
 
-    FileService.$inject = ['$http', 'CONFIG'];
-    function FileService($http, CONFIG) {
+    FileProcessorService.$inject = ['$http', 'CONFIG'];
+    function FileProcessorService($http, CONFIG) {
         this.urlSearch = urlSearch;
         this.retrieve = retrieve;
         this.retrieveRecords = retrieveRecords;

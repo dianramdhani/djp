@@ -10,13 +10,13 @@
             controller: _
         });
 
-    _.$inject = ['$scope', '$state', '$compile', 'DTOptionsBuilder', 'DTColumnBuilder', 'FileService', 'ExcelRuleService'];
-    function _($scope, $state, $compile, DTOptionsBuilder, DTColumnBuilder, FileService, ExcelRuleService) {
+    _.$inject = ['$scope', '$state', '$compile', 'DTOptionsBuilder', 'DTColumnBuilder', 'FileProcessorService', 'ExcelRuleService'];
+    function _($scope, $state, $compile, DTOptionsBuilder, DTColumnBuilder, FileProcessorService, ExcelRuleService) {
         let $ctrl = this;
         $ctrl.$onInit = () => {
             $scope.dtOptions = DTOptionsBuilder.newOptions()
                 .withOption('ajax', {
-                    url: FileService.urlSearch(),
+                    url: FileProcessorService.urlSearch(),
                     dataFilter: (data) => {
                         data = angular.fromJson(data);
                         return angular.toJson({

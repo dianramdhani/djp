@@ -10,18 +10,18 @@
             controller: _
         });
 
-    _.$inject = ['$stateParams', '$scope', '$compile', 'DTOptionsBuilder', 'DTColumnBuilder', 'FileService'];
-    function _($stateParams, $scope, $compile, DTOptionsBuilder, DTColumnBuilder, FileService) {
+    _.$inject = ['$stateParams', '$scope', '$compile', 'DTOptionsBuilder', 'DTColumnBuilder', 'FileProcessorService'];
+    function _($stateParams, $scope, $compile, DTOptionsBuilder, DTColumnBuilder, FileProcessorService) {
         let $ctrl = this;
         $ctrl.$onInit = () => {
-            FileService.retrieve($stateParams.idFile)
+            FileProcessorService.retrieve($stateParams.idFile)
                 .then(({ data }) => {
                     $scope.filename = data.filename;
                 });
 
             $scope.dtOptions = DTOptionsBuilder
                 .fromFnPromise(() => {
-                    return FileService.retrieveRecords($stateParams.idFile).then(_ => _.data);
+                    return FileProcessorService.retrieveRecords($stateParams.idFile).then(_ => _.data);
                 })
                 .withOption('lengthMenu', [5, 10, 20])
                 .withOption('createdRow', (row, _, __) => { $compile(angular.element(row).contents())($scope); })
