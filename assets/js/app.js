@@ -23,6 +23,7 @@ require('../routes/etl.route');
 // SERVICES
 require('../services/file.service');
 require('../services/person.service');
+require('../services/excel-rule.service');
 
 // DIRECTIVES
 require('../directives/tr-files.directive');

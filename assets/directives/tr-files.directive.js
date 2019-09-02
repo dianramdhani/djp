@@ -26,7 +26,6 @@
                 });
                 element.next('.custom-file-label').html(label);
                 ngModel.$setViewValue(files);
-                console.log({ files });
             });
         }
     }

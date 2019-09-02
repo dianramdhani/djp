@@ -10,8 +10,8 @@
             controller: _
         });
 
-    _.$inject = ['$scope', '$state', '$compile', '$http', 'DTOptionsBuilder', 'DTColumnBuilder', 'FileService'];
-    function _($scope, $state, $compile, $http, DTOptionsBuilder, DTColumnBuilder, FileService) {
+    _.$inject = ['$scope', '$state', '$compile', 'DTOptionsBuilder', 'DTColumnBuilder', 'FileService', 'ExcelRuleService'];
+    function _($scope, $state, $compile, DTOptionsBuilder, DTColumnBuilder, FileService, ExcelRuleService) {
         let $ctrl = this;
         $ctrl.$onInit = () => {
             $scope.dtOptions = DTOptionsBuilder.newOptions()
@@ -63,13 +63,8 @@
 
         $scope.upload = async () => {
             for (const i in $scope.files) {
-                let fd = new FormData();
-                fd.append('file', $scope.files[i]);
-                let res = await $http.post('http://cra.tritronik.com:8081/excel/process', fd, {
-                    transformResponse: angular.identity,
-                    headers: { 'Content-Type': undefined }
-                });
-                console.log($scope.files[i], i, fd, res);
+                let res = await ExcelRuleService.process($scope.files[i]);
+                console.log(res);
             }
         }
     }
