@@ -51,14 +51,17 @@
                 DTColumnBuilder.newColumn('status').withTitle('Status'),
                 DTColumnBuilder.newColumn(null).withTitle('').notSortable()
                     .renderWith((data, _, __, ___) => {
-                        return `<button class="btn btn-primary tr-btn-table" ui-sref="etl.proximity({idFile: '${data.id}'})">Show File</button>`;
+                        return data.status === 'Processed' ||
+                            data.status === 'Matching' ||
+                            data.status === 'Matched' ||
+                            data.status === 'Completed' ?
+                            `<button class="btn btn-primary tr-btn-table" ui-sref="etl.proximity({idFile: '${data.id}'})">Show File</button>` : '';
                     })
             ];
 
         };
         let $ctrl = this;
         $ctrl.$onInit = () => {
-            console.log($element);
             refreshData();
         };
 
