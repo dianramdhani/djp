@@ -49,7 +49,7 @@
                 DTColumnBuilder.newColumn('filename').withTitle('File Name'),
                 DTColumnBuilder.newColumn('size').withTitle('Size (byte)'),
                 DTColumnBuilder.newColumn('status').withTitle('Status'),
-                DTColumnBuilder.newColumn(null).withTitle('').notSortable()
+                DTColumnBuilder.newColumn(null).withTitle('').notSortable().withClass('text-center')
                     .renderWith((data, _, __, ___) => {
                         return data.status === 'Processed' ||
                             data.status === 'Matching' ||

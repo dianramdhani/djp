@@ -33,7 +33,7 @@
                 DTColumnBuilder.newColumn('Place of Birth').withTitle('Place of Birth').withClass('wd-150'),
                 DTColumnBuilder.newColumn('Date of Birth').withTitle('Date of Birth').withClass('wd-150'),
                 DTColumnBuilder.newColumn('Full Address').withTitle('Full Address').withClass('wd-200'),
-                DTColumnBuilder.newColumn(null).withTitle('').notSortable().withClass('wd-100')
+                DTColumnBuilder.newColumn(null).withTitle('').notSortable().withClass('wd-100 text-center')
                     .renderWith((data, _, __, ___) => {
                         return `
                         <button class="btn btn-warning tr-btn-table" ng-if="${data.status === 'Matched' ? "true" : "false"}" ui-sref="etl.proximity.detailData({idUnprocessed: '${data.id}'})">Unprocessed</button>
