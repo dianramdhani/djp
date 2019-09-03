@@ -37,15 +37,15 @@
                         </div>
                         `;
                     }),
+                DTColumnBuilder.newColumn(null).withTitle('').notSortable().withClass('wd-80 text-center')
+                    .renderWith((data, _, __, ___) => {
+                        return `<button class="btn btn-primary tr-btn-table" ng-click="matching('${data.id}')">Matching</button>`;
+                    }),
                 DTColumnBuilder.newColumn('npwp').withTitle('NPWP').withOption('defaultContent', '').withClass('wd-150'),
                 DTColumnBuilder.newColumn('name').withTitle('Name').withOption('defaultContent', '').withClass('wd-150'),
                 DTColumnBuilder.newColumn('placeOfBirth').withTitle('Place of Birth').withOption('defaultContent', '').withClass('wd-150'),
                 DTColumnBuilder.newColumn('dateOfBirth').withTitle('Date of Birth').withOption('defaultContent', '').withClass('wd-150'),
-                DTColumnBuilder.newColumn('address').withTitle('Address').withOption('defaultContent', '').withClass('wd-200'),
-                DTColumnBuilder.newColumn(null).withTitle('').notSortable().withClass('wd-60')
-                    .renderWith((data, _, __, ___) => {
-                        return `<button class="btn btn-primary tr-btn-table" ng-click="matching('${data.id}')">Matching</button>`;
-                    })
+                DTColumnBuilder.newColumn('address').withTitle('Address').withOption('defaultContent', '').withClass('wd-200')
             ];
         };
 
