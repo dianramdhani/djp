@@ -21,6 +21,7 @@ require('../routes/app.route');
 require('../routes/etl.route');
 
 // SERVICES
+require('../services/util.service');
 require('../services/file-processor.service');
 require('../services/person.service');
 require('../services/excel-rule.service');
@@ -30,6 +31,7 @@ require('../directives/tr-files.directive');
 
 // COMPONENTS
 require('../components/tr-wrapper/tr-wrapper');
+require('../components/tr-loading/tr-loading');
 
 // VIEWS
 require('../views/login/login');
