@@ -19,7 +19,7 @@
                 .fromFnPromise(() => {
                     let q = $q.defer();
                     PersonService.findProximityPersonByPersonId($stateParams.idUnprocessed).then(({ data }) => {
-                        $scope.dataMaster = angular.fromJson(data.content[0].solrMatcher);
+                        $scope.dataMaster = angular.fromJson(data.content[0].solrMatcher) || [];
                         q.resolve($scope.dataMaster);
                     });
                     return q.promise;

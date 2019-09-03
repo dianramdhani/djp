@@ -10,6 +10,7 @@
         this.retrieve = retrieve;
         this.retrieveRecords = retrieveRecords;
         this.uploadFile = uploadFile;
+        this.upload = upload;
 
         const url = `${CONFIG.serviceAddress}:${CONFIG.servicePort}`
 
@@ -44,6 +45,19 @@
             let fd = new FormData();
             fd.append('file', file);
             return $http.post(`${url}/file/uploadFile`, fd, {
+                transformResponse: angular.identity,
+                headers: { 'Content-Type': undefined }
+            });
+        }
+
+        /**
+         * Upload and process file.
+         * @param {File} file - File xls|csv|txt|etc.
+         */
+        function upload(file) {
+            let fd = new FormData();
+            fd.append('file', file);
+            return $http.post(`${url}/file/uploadAndProcess`, fd, {
                 transformResponse: angular.identity,
                 headers: { 'Content-Type': undefined }
             });

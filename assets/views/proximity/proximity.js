@@ -21,7 +21,7 @@
 
             $scope.dtOptions = DTOptionsBuilder
                 .fromFnPromise(() => {
-                    return FileProcessorService.retrieveRecords($stateParams.idFile).then(_ => _.data);
+                    return FileProcessorService.retrieveRecords($stateParams.idFile).then(_ => _.data || []);
                 })
                 .withOption('lengthMenu', [5, 10, 20])
                 .withOption('createdRow', (row, _, __) => { $compile(angular.element(row).contents())($scope); })
