@@ -9,6 +9,7 @@
         this.findById = findById;
         this.findProximityPersonByPersonId = findProximityPersonByPersonId;
         this.findExactPersonByPersonId = findExactPersonByPersonId;
+        this.merge = merge;
 
         const url = `${CONFIG.serviceAddress}:${CONFIG.servicePort}`
 
@@ -34,6 +35,14 @@
          */
         function findExactPersonByPersonId(id) {
             return $http.get(`${url}/person/exact-by-personid`, { params: { personId: id } });
+        }
+
+        /**
+         * Merge person.
+         * @param {Object} person - Data person.
+         */
+        function merge(person) {
+            return $http.post(`${url}/person/merge`, person);
         }
     }
 })();
