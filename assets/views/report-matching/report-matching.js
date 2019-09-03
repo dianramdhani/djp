@@ -12,9 +12,12 @@
             controller: _
         });
 
-    _.$inject = [];
-    function _() {
+    _.$inject = ['$scope', '$stateParams', 'PersonService'];
+    function _($scope, $stateParams, PersonService) {
         let $ctrl = this;
-        $ctrl.$onInit = () => { };
+        $ctrl.$onInit = async () => {
+            $scope.data = await PersonService.findExactPersonByPersonId($stateParams.idProcessed).then(({ data }) => data.content[0]);
+            $scope.$apply();
+        };
     }
 })();
