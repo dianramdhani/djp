@@ -24,7 +24,7 @@
                         <div class="d-flex align-items-center">
                             <div class="wd-10 ht-10 rounded-circle bg-pink mg-r-5"></div>
                             <h5 class="tx-normal tx-rubik mg-b-0">{{files.totalMerged}} <small
-                                    class="tx-color-04">{{files.mergedPercentage}}%</small></h5>
+                                    class="tx-color-04">{{files.mergedPercentage | number:2}}%</small></h5>
                         </div>
                     </div>
                     <div class="col-6">
@@ -32,7 +32,7 @@
                         <div class="d-flex align-items-center">
                             <div class="wd-10 ht-10 rounded-circle bg-primary mg-r-5"></div>
                             <h5 class="tx-normal tx-rubik mg-b-0">{{files.totalRecords - files.totalMerged}} <small
-                                    class="tx-color-04">{{100 - files.mergedPercentage}}%</small></h5>
+                                    class="tx-color-04">{{100 - files.mergedPercentage | number:2}}%</small></h5>
                         </div>
                     </div>
                 </div>
