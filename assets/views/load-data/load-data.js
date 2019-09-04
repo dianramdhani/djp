@@ -52,7 +52,9 @@
                         return `${(new Date(data)).toLocaleString()}`;
                     }),
                 DTColumnBuilder.newColumn('filename').withTitle('File Name'),
-                DTColumnBuilder.newColumn('size').withTitle('Size (byte)'),
+                DTColumnBuilder.newColumn('size').withTitle('Size File (Byte)'),
+                DTColumnBuilder.newColumn('totalRecords').withTitle('Total Records'),
+                DTColumnBuilder.newColumn('mergedRecords').withTitle('Merged Records'),
                 DTColumnBuilder.newColumn('status').withTitle('Status'),
                 DTColumnBuilder.newColumn(null).withTitle('').notSortable().withClass('text-center')
                     .renderWith((data, _, __, ___) => {

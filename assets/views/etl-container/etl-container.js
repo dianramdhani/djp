@@ -34,7 +34,7 @@
                             to: 'etl.dashboard',
                             params: {}
                         },
-                        active: false
+                        active: true
                     },
                     {
                         type: 'link',
@@ -44,7 +44,7 @@
                             to: 'etl.loadData',
                             params: {}
                         },
-                        active: true
+                        active: false
                     },
                     {
                         type: 'link',
