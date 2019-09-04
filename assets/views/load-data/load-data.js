@@ -47,7 +47,10 @@
                 .withOption('language', { search: 'File Search' })
                 .withPaginationType('simple_numbers');
             $scope.dtColumns = [
-                DTColumnBuilder.newColumn('uploadDate').withTitle('Upload Date'),
+                DTColumnBuilder.newColumn('uploadDate').withTitle('Upload Date')
+                    .renderWith((data, _, __, ___) => {
+                        return `${(new Date(data)).toLocaleString()}`;
+                    }),
                 DTColumnBuilder.newColumn('filename').withTitle('File Name'),
                 DTColumnBuilder.newColumn('size').withTitle('Size (byte)'),
                 DTColumnBuilder.newColumn('status').withTitle('Status'),
