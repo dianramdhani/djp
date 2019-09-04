@@ -1,8 +1,5 @@
 window.app = angular.module('DJP', ['ui.router', 'ngCookies', 'datatables']);
 
-// CONFIG
-require('./config');
-
 // RUN
 (function () {
     'use strict';

@@ -7,18 +7,27 @@
     FileProcessorService.$inject = ['$http', 'CONFIG'];
     function FileProcessorService($http, CONFIG) {
         this.urlSearch = urlSearch;
+        this.loadFiles = loadFiles;
         this.retrieve = retrieve;
         this.retrieveRecords = retrieveRecords;
         this.uploadFile = uploadFile;
         this.upload = upload;
 
-        const url = `${CONFIG.serviceAddress}:${CONFIG.servicePort}`
+        const url = CONFIG.serviceAddress;
 
         /**
          * Search file/s.
          */
         function urlSearch() {
             return `${url}/file/search`;
+        }
+
+        /**
+         * Load list files. Use for dashboard.
+         * @param {Number} limit - Limit data record.
+         */
+        function loadFiles(limit) {
+            return $http.get(`${url}/file/search`, { limit });
         }
 
         /**

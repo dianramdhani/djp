@@ -8,4 +8,39 @@
     </nav>
 </div>
 <div class="row row-xs">
+    <div class="col-md-6 col-lg-4 col-xl-3 mg-t-10 mg-lg-t-0">
+        <div class="card">
+            <div class="card-header">
+                <h6 class="mg-b-0">Load Data</h6>
+            </div>
+            <div class="card-body pd-lg-25">
+                <div class="chart-seven"><canvas id="chartDonut"></canvas></div>
+            </div>
+            <div class="card-footer pd-20">
+                <div class="row">
+                    <div class="col-6">
+                        <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 tx-nowrap mg-b-5">Processed
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <div class="wd-10 ht-10 rounded-circle bg-pink mg-r-5"></div>
+                            <h5 class="tx-normal tx-rubik mg-b-0">{{files.totalMerged}} <small
+                                    class="tx-color-04">{{files.mergedPercentage}}%</small></h5>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 mg-b-5">Unprocessed</p>
+                        <div class="d-flex align-items-center">
+                            <div class="wd-10 ht-10 rounded-circle bg-primary mg-r-5"></div>
+                            <h5 class="tx-normal tx-rubik mg-b-0">{{files.totalRecords - files.totalMerged}} <small
+                                    class="tx-color-04">{{100 - files.mergedPercentage}}%</small></h5>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    <label class="tx-10 tx-uppercase tx-medium tx-color-03 mg-t-50 mg-r-5">Total Files:</label>
+                    <span class="tx-normal tx-rubik tx-18">{{files.totalFiles}}</span>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>

@@ -8,7 +8,7 @@
     function ExcelRuleService($http, CONFIG) {
         this.process = process;
 
-        const url = `${CONFIG.serviceAddress}:${CONFIG.servicePort}`
+        const url = CONFIG.serviceAddress;
 
         function process(file) {
             let fd = new FormData();
