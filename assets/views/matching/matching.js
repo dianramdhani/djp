@@ -14,8 +14,8 @@ require('./matching.css');
             controller: _
         });
 
-    _.$inject = ['$stateParams', '$scope', '$state', 'PersonService'];
-    function _($stateParams, $scope, $state, PersonService) {
+    _.$inject = ['$stateParams', '$scope', '$state', 'PersonService', 'UtilService'];
+    function _($stateParams, $scope, $state, PersonService, UtilService) {
         let $ctrl = this;
         $ctrl.$onInit = () => {
             $scope.data = angular.fromJson($stateParams.data);
@@ -34,9 +34,11 @@ require('./matching.css');
 
         $scope.notEquals = (a, b) => !angular.equals(a, b);
 
-        $scope.merge = async () => {
-            let res = await PersonService.merge($scope.dataMerge);
-            $state.go('etl.proximity', { idFile: $stateParams.idFile });
+        $scope.merge = () => {
+            UtilService.trLoadingProcess(async () => {
+                await PersonService.merge($scope.dataMerge);
+                $state.go('etl.proximity', { idFile: $stateParams.idFile });
+            });
         };
     }
 })();
