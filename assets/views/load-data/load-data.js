@@ -10,9 +10,10 @@
             controller: _
         });
 
-    _.$inject = ['$scope', '$state', '$compile', '$element', 'DTOptionsBuilder', 'DTColumnBuilder', 'FileProcessorService'];
-    function _($scope, $state, $compile, $element, DTOptionsBuilder, DTColumnBuilder, FileProcessorService) {
-        const refreshData = () => {
+    _.$inject = ['$scope', '$state', '$compile', '$element', 'DTOptionsBuilder', 'DTColumnBuilder', 'FileProcessorService', 'UtilService'];
+    function _($scope, $state, $compile, $element, DTOptionsBuilder, DTColumnBuilder, FileProcessorService, UtilService) {
+        let $ctrl = this;
+        $ctrl.$onInit = () => {
             $scope.dtOptions = DTOptionsBuilder.newOptions()
                 .withOption('ajax', {
                     url: FileProcessorService.urlSearch(),
@@ -41,6 +42,7 @@
                 .withOption('processing', true)
                 .withOption('serverSide', true)
                 .withOption('lengthMenu', [5, 10, 20])
+                .withOption('order', [[0, 'desc']])
                 .withOption('createdRow', (row, _, __) => { $compile(angular.element(row).contents())($scope); })
                 .withOption('language', { search: 'File Search' })
                 .withPaginationType('simple_numbers');
@@ -58,28 +60,25 @@
                             `<button class="btn btn-primary tr-btn-table" ui-sref="etl.proximity({idFile: '${data.id}'})">Show File</button>` : '';
                     })
             ];
-
-        };
-        let $ctrl = this;
-        $ctrl.$onInit = () => {
-            refreshData();
+            $scope.dtInstance = {};
         };
 
         $scope.showData = () => {
             $state.go('etl.proximity');
         };
 
-        $scope.upload = async () => {
-            for (const i in $scope.files) {
-                let res = await FileProcessorService.uploadFile($scope.files[i]);
-                console.log(res);
-            }
-            refreshData();
-            angular.element('.content-body').animate({ scrollTop: $element.find('table').offset().top }, 350);
-            /**
-             * @todo
-             * add loading
-             */
+        $scope.upload = () => {
+            UtilService.trLoadingProcess(async () => {
+                for (const i in $scope.files) {
+                    let res = await FileProcessorService.uploadFile($scope.files[i]);
+                    /**
+                     * @todo 
+                     * give message after upload.
+                     */
+                }
+                $scope.dtInstance.reloadData();
+                angular.element('.content-body').animate({ scrollTop: $element.find('table').offset().top }, 350);
+            });
         }
     }
 })();

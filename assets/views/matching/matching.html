@@ -19,36 +19,89 @@
                         <img class="tr-photo" src="../../img/sample.jpg" alt="">
                     </td>
                 </tr>
-                <tr ng-class="{'table-danger': notEquals(data['NPWP'], dataMaster.npwp)}">
+                <tr ng-class="{'table-danger': notEquals(data['NPWP'], dataMaster.npwp)}"
+                    ng-init="dataMerge.npwp = dataMaster.npwp">
                     <th>NPWP</th>
-                    <td>{{data['NPWP']}}</td>
-                    <td>{{dataMaster.npwp}}</td>
+                    <td>
+                        <input type="radio" ng-if="notEquals(data['NPWP'], dataMaster.npwp)" ng-model="dataMerge.npwp"
+                            ng-value="data['NPWP']"> {{data['NPWP']}}
+                    </td>
+                    <td>
+                        <input type="radio" ng-if="notEquals(data['NPWP'], dataMaster.npwp)" ng-model="dataMerge.npwp"
+                            ng-value="dataMaster.npwp"> {{dataMaster.npwp}}
+                    </td>
                 </tr>
-                <tr ng-class="{'table-danger': notEquals(data['Full Name'], dataMaster.name)}">
+                <tr ng-class="{'table-danger': notEquals(data['NIK'], dataMaster.nik)}"
+                    ng-init="dataMerge.nik = dataMaster.nik">
+                    <th>NIK</th>
+                    <td>
+                        <input type="radio" ng-if="notEquals(data['NIK'], dataMaster.nik)" ng-model="dataMerge.nik"
+                            ng-value="data['NIK']"> {{data['NIK']}}
+                    </td>
+                    <td>
+                        <input type="radio" ng-if="notEquals(data['NIK'], dataMaster.nik)" ng-model="dataMerge.nik"
+                            ng-value="dataMaster.nik"> {{dataMaster.nik}}
+                    </td>
+                </tr>
+                <tr ng-class="{'table-danger': notEquals(data['Full Name'], dataMaster.name)}"
+                    ng-init="dataMerge.fullName = dataMaster.name">
                     <th>Full Name</th>
-                    <td>{{data['Full Name']}}</td>
-                    <td>{{dataMaster.name}}</td>
+                    <td>
+                        <input type="radio" ng-if="notEquals(data['Full Name'], dataMaster.name)"
+                            ng-model="dataMerge.fullName" ng-value="data['Full Name']"> {{data['Full Name']}}
+                    </td>
+                    <td>
+                        <input type="radio" ng-if="notEquals(data['Full Name'], dataMaster.name)"
+                            ng-model="dataMerge.fullName" ng-value="dataMaster.name"> {{dataMaster.name}}
+                    </td>
                 </tr>
-                <tr ng-class="{'table-danger': notEquals(data['Place of Birth'], dataMaster.placeOfBirth)}">
+                <tr ng-class="{'table-danger': notEquals(data['Place of Birth'], dataMaster.placeOfBirth)}"
+                    ng-init="dataMerge.placeOfBirth = dataMaster.placeOfBirth">
                     <th>Place of Birth</th>
-                    <td>{{data['Place of Birth']}}</td>
-                    <td>{{dataMaster.placeOfBirth}}</td>
+                    <td>
+                        <input type="radio" ng-if="notEquals(data['Place of Birth'], dataMaster.placeOfBirth)"
+                            ng-model="dataMerge.placeOfBirth" ng-value="data['Place of Birth']">
+                        {{data['Place of Birth']}}
+                    </td>
+                    <td>
+                        <input type="radio" ng-if="notEquals(data['Place of Birth'], dataMaster.placeOfBirth)"
+                            ng-model="dataMerge.placeOfBirth" ng-value="dataMaster.placeOfBirth">
+                        {{dataMaster.placeOfBirth}}
+                    </td>
                 </tr>
-                <tr ng-class="{'table-danger': notEquals(data['Date of Birth'], dataMaster.dateOfBirth)}">
+                <tr ng-class="{'table-danger': notEquals(data['Date of Birth'], dataMaster.dateOfBirth)}"
+                    ng-init="dataMerge.dateOfBirth = dataMaster.dateOfBirth">
                     <th>Date of Birth</th>
-                    <td>{{data['Date of Birth']}}</td>
-                    <td>{{dataMaster.dateOfBirth}}</td>
+                    <td>
+                        <input type="radio" ng-if="notEquals(data['Date of Birth'], dataMaster.dateOfBirth)"
+                            ng-model="dataMerge.dateOfBirth" ng-value="data['Date of Birth']">
+                        {{data['Date of Birth']}}
+                    </td>
+                    <td>
+                        <input type="radio" ng-if="notEquals(data['Date of Birth'], dataMaster.dateOfBirth)"
+                            ng-model="dataMerge.dateOfBirth" ng-value="dataMaster.dateOfBirth">
+                        {{dataMaster.dateOfBirth}}
+                    </td>
                 </tr>
-                <tr ng-class="{'table-danger': notEquals(data['Full Address'], dataMaster.address)}">
+                <tr ng-class="{'table-danger': notEquals(data['Full Address'], dataMaster.address)}"
+                    ng-init="dataMerge.fullAddress = dataMaster.address">
                     <th>Address</th>
-                    <td>{{data['Full Address']}}</td>
-                    <td>{{dataMaster.address}}</td>
+                    <td>
+                        <input type="radio" ng-if="notEquals(data['Full Address'], dataMaster.address)"
+                            ng-model="dataMerge.fullAddress" ng-value="data['Full Address']">
+                        {{data['Full Address']}}
+                    </td>
+                    <td>
+                        <input type="radio" ng-if="notEquals(data['Full Address'], dataMaster.address)"
+                            ng-model="dataMerge.fullAddress" ng-value="dataMaster.address">
+                        {{dataMaster.address}}
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
     <div class="card-footer d-flex justify-content-center">
-        <button class="btn btn-primary tr-btn-form">Merge</button>
+        <button class="btn btn-primary tr-btn-form" ng-click="merge()">Merge</button>
         <button class="btn btn-danger tr-btn-form"
             ui-sref="etl.proximity.detailData({idUnprocessed: data.id})">Cancel</button>
     </div>
