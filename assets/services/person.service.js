@@ -11,7 +11,7 @@
         this.findExactPersonByPersonId = findExactPersonByPersonId;
         this.merge = merge;
 
-        const url = `${CONFIG.serviceAddress}:${CONFIG.servicePort}`
+        const url = CONFIG.serviceAddress;
 
         /**
          * Find person detail by id.

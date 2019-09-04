@@ -13,7 +13,7 @@
         this.uploadFile = uploadFile;
         this.upload = upload;
 
-        const url = `${CONFIG.serviceAddress}:${CONFIG.servicePort}`
+        const url = CONFIG.serviceAddress;
 
         /**
          * Search file/s.
