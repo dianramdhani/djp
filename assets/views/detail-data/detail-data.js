@@ -31,6 +31,7 @@
             $scope.dtColumns = [
                 DTColumnBuilder.newColumn('score').withTitle('Score').withClass('wd-100'),
                 DTColumnBuilder.newColumn('npwp').withTitle('NPWP').withOption('defaultContent', '').withClass('wd-150'),
+                DTColumnBuilder.newColumn('nik').withTitle('NIK').withOption('defaultContent', '').withClass('wd-150'),
                 DTColumnBuilder.newColumn('name').withTitle('Name').withOption('defaultContent', '').withClass('wd-150'),
                 DTColumnBuilder.newColumn('placeOfBirth').withTitle('Place of Birth').withOption('defaultContent', '').withClass('wd-150'),
                 DTColumnBuilder.newColumn('dateOfBirth').withTitle('Date of Birth').withOption('defaultContent', '').withClass('wd-150'),
