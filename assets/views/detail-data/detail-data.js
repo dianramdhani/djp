@@ -50,7 +50,7 @@
         };
 
         $scope.matching = (idDataMaster) => {
-            let dataMaster = $scope.dataMaster.map(_ => _.id === idDataMaster ? _ : false)[0];
+            let dataMaster = $scope.dataMaster.find(_ => angular.equals(_.id, idDataMaster));
             $state.go('etl.proximity.matching', { data: angular.toJson($scope.data), dataMaster: angular.toJson(dataMaster) });
         };
     }
