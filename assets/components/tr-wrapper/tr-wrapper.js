@@ -15,8 +15,8 @@
             }
         });
 
-    _.$inject = ['$timeout', '$scope', '$state'];
-    function _($timeout, $scope, $state) {
+    _.$inject = ['$timeout', '$scope', '$state', '$rootScope', '$cookies', 'UserService'];
+    function _($timeout, $scope, $state, $rootScope, $cookies, UserService) {
         let $ctrl = this;
         $ctrl.$onInit = () => {
             $timeout(() => {
@@ -39,7 +39,18 @@
                     menu.active = true;
                 }
             });
+
+            $rootScope.global.menu = $ctrl.menu;
+            let expires = new Date();
+            expires.setDate(expires.getDate() + 7);
+            $cookies.putObject('menu', $rootScope.global.menu, { expires });
+
             $state.go($ctrl.menu.sidebar[index].state.to, $ctrl.menu.sidebar[index].state.params);
+        };
+
+        $scope.logout = () => {
+            UserService.logout();
+            $state.go('login');
         };
     }
 })();

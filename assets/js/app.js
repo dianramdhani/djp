@@ -7,9 +7,18 @@ window.app = angular.module('DJP', ['ui.router', 'ngCookies', 'datatables']);
     window.app
         .run(Run);
 
-    Run.$inject = ['$state'];
-    function Run($state) {
-        $state.go('login');
+    Run.$inject = ['$state', '$rootScope', '$cookies', '$http'];
+    function Run($state, $rootScope, $cookies, $http) {
+        $rootScope['global'] = {
+            user: angular.fromJson($cookies.get('user')),
+            menu: angular.fromJson($cookies.get('menu'))
+        } || {};
+        if (typeof $rootScope.global.user === 'undefined') {
+            $state.go('login');
+        } else {
+            // $http.defaults.headers.common = { token: $rootScope.global.user.token };
+            $state.go('etl');
+        }
     }
 })();
 

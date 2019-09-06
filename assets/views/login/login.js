@@ -17,11 +17,13 @@ require('./login.css');
         let $ctrl = this;
         $ctrl.$onInit = () => { };
 
-        $scope.login = () => {
-            UserService.login($scope.username, $scope.password)
-                // .then(() => {
-                //     $state.go('etl');
-                // });
+        $scope.login = async () => {
+            await UserService.login($scope.username, $scope.password);
+            $state.go('etl');
+            /**
+             * @todo
+             * state arahkan sesuai dengan role
+             */
         };
     }
 })();
