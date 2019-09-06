@@ -22,6 +22,7 @@ require('../services/util.service');
 require('../services/file-processor.service');
 require('../services/person.service');
 require('../services/excel-rule.service');
+require('../services/normalization-rule.service');
 
 // DIRECTIVES
 require('../directives/tr-files.directive');
@@ -42,3 +43,4 @@ require('../views/matching/matching');
 require('../views/cleansing-role/cleansing-role');
 require('../views/history-data-processing/history-data-processing');
 require('../views/activity-list/activity-list');
+require('../views/cleansing-role-form/cleansing-role-form');
