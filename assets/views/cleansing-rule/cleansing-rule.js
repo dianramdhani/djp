@@ -78,8 +78,11 @@ require('./cleansing-rule.css');
             `))($scope));
         };
 
-        $scope.deleteRule = (id) => {
-            console.log('delete', id);
+        $scope.deleteRule = async (id) => {
+            if (confirm("Are you sure want delete this record?")) {
+                await NormalizationRuleService.deleteRule(id);
+                $scope.reload();
+            }
         };
 
         $scope.reload = () => {

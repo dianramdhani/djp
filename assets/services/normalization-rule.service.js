@@ -8,6 +8,7 @@
     function NormalizationRuleService($http, CONFIG) {
         this.findAll = findAll;
         this.save = save;
+        this.deleteRule = deleteRule;
 
         const url = CONFIG.serviceAddress;
 
@@ -24,6 +25,14 @@
          */
         function save(rule) {
             return $http.post(`${url}/title/rule`, rule);
+        }
+
+        /**
+         * Delete rule.
+         * @param {String} id - Id rule.
+         */
+        function deleteRule(id) {
+            return $http.delete(`${url}/title/rule/${id}`);
         }
     }
 })();
