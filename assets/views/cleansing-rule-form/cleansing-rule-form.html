@@ -1,0 +1,45 @@
+<div class="modal fade" ng-attr-id="{{'modal-'+id}}" tabindex="-1" role="dialog" aria-labelledby="{{'modal-'+id}}"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form name="formCleansingRule" class="modal-content tx-10" ng-submit="saveRule()">
+            <div class="modal-header">
+                <h6 class="modal-title" ng-attr-id="exampleModalLabel">Rule Form</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pd-x-30">
+                <div class="form-group">
+                    <label ng-attr-for="{{'type-'+id}}">Type</label>
+                    <select class="form-control" ng-attr-id="{{'type-'+id}}" ng-model="rule.fieldName"
+                        ng-required="true">
+                        <option value="title">Title</option>
+                        <option value="address">Address</option>
+                        <option value="npwp">NPWP</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label ng-attr-for="{{'content-'+id}}">Content</label>
+                    <input type="text" class="form-control" ng-attr-id="{{'content-'+id}}" ng-model="rule.oldContent"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label ng-attr-for="{{'replacement-'+id}}">Replacement</label>
+                    <input type="text" class="form-control" ng-attr-id="{{'replacement-'+id}}"
+                        ng-model="rule.newContent">
+                </div>
+                <div class="form-group">
+                    <label>Word</label>
+                    <div class="custom-control custom-switch pd-l-20">
+                        <input type="checkbox" class="custom-control-input" ng-attr-id="{{'word-'+id}}"
+                            ng-model="rule.word">
+                        <label class="custom-control-label" ng-attr-for="{{'word-'+id}}"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary tx-13">Save Rule</button>
+            </div>
+        </form>
+    </div>
+</div>

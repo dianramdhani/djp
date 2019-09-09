@@ -50,10 +50,17 @@ require('./cleansing-rule.css');
                         `;
                     }),
             ];
+            $scope.dtInstance = {};
         };
 
         $scope.addRule = () => {
-            console.log('hallo indonesia');
+            $element.prepend($compile(angular.element(`
+                <cleansing-rule-form reload="reload()"></cleansing-rule-form>
+            `))($scope))
+        };
+
+        $scope.reload = () => {
+            $scope.dtInstance.reloadData();
         };
 
         $scope.wordToggle = (id) => {
