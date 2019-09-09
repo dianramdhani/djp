@@ -14,17 +14,18 @@ require('./cleansing-rule.css');
 
     _.$inject = ['$scope', '$compile', '$timeout', '$element', 'NormalizationRuleService', 'DTOptionsBuilder', 'DTColumnBuilder'];
     function _($scope, $compile, $timeout, $element, NormalizationRuleService, DTOptionsBuilder, DTColumnBuilder) {
-        let $ctrl = this;
+        let $ctrl = this, data;
         $ctrl.$onInit = () => {
             $scope.dtOptions = DTOptionsBuilder
                 .fromFnPromise(() => {
                     return NormalizationRuleService.findAll().then(_ => {
-                        console.log(_.data);
-                        return _.data || [];
+                        data = _.data || []
+                        return data;
                     });
                 })
                 .withOption('lengthMenu', [5, 10, 20])
                 .withOption('createdRow', (row, _, __) => { $compile(angular.element(row).contents())($scope); })
+                .withOption('drawCallback', () => feather.replace())
                 .withOption('initComplete', () => {
                     let addBtnContainer = $element.find('.dataTables_filter'),
                         btnElm = `
@@ -40,15 +41,26 @@ require('./cleansing-rule.css');
                 DTColumnBuilder.newColumn('fieldName').withTitle('Field Name'),
                 DTColumnBuilder.newColumn('oldContent').withTitle('Old Content'),
                 DTColumnBuilder.newColumn('newContent').withTitle('New Content'),
-                DTColumnBuilder.newColumn('word').withTitle('Word')
+                DTColumnBuilder.newColumn('word').withTitle('Word').notSortable().withClass('wd-60')
                     .renderWith((data, _, { id }, ___) => {
                         return `
                             <div class="custom-control custom-switch pd-l-15">
-                                <input type="checkbox" class="custom-control-input" id="sw-${id}" ng-click="wordToggle('${id}')" ${data ? 'checked' : ''}>
+                                <input type="checkbox" class="custom-control-input" id="sw-${id}" disabled ${data ? 'checked' : ''}>
                                 <label class="custom-control-label" for="sw-${id}"></label>
                             </div>
                         `;
                     }),
+                DTColumnBuilder.newColumn(null).withTitle('').notSortable().withClass('text-right wd-80')
+                    .renderWith(({ id }, _, __, ___) => {
+                        return `
+                            <button class="btn btn-primary ht-30 pd-y-0 btn-icon" ng-click="updateRule('${id}')">
+                                <i data-feather="settings"></i>
+                            </button>
+                            <button class="btn btn-primary ht-30 pd-y-0 btn-icon" ng-click="deleteRule('${id}')">
+                                <i data-feather="trash-2"></i>
+                            </button>
+                        `;
+                    })
             ];
             $scope.dtInstance = {};
         };
@@ -56,15 +68,22 @@ require('./cleansing-rule.css');
         $scope.addRule = () => {
             $element.prepend($compile(angular.element(`
                 <cleansing-rule-form reload="reload()"></cleansing-rule-form>
-            `))($scope))
+            `))($scope));
+        };
+
+        $scope.updateRule = (_id) => {
+            $scope.rule = data.find(({ id }) => id === _id);
+            $element.prepend($compile(angular.element(`
+                <cleansing-rule-form reload="reload()" rule="rule"></cleansing-rule-form>
+            `))($scope));
+        };
+
+        $scope.deleteRule = (id) => {
+            console.log('delete', id);
         };
 
         $scope.reload = () => {
             $scope.dtInstance.reloadData();
-        };
-
-        $scope.wordToggle = (id) => {
-            console.log(id);
         };
     }
 })();

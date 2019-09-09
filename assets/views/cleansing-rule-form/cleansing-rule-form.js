@@ -12,6 +12,7 @@
             controller: _,
             bindings: {
                 reload: '&',
+                rule: '<'
             }
         });
 
@@ -20,7 +21,7 @@
         let $ctrl = this, modalEl;
         $ctrl.$onInit = () => {
             $scope.id = $scope.$id;
-            $scope.rule = {
+            $scope.rule = $ctrl.rule || {
                 fieldName: 'title',
                 oldContent: undefined,
                 newContent: undefined,
