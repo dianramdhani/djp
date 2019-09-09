@@ -15,32 +15,49 @@
         var $ctrl = this;
         $ctrl.$onInit = () => {
             $scope.id = $scope.$id;
+            $scope.dataMatchingProgress = {};
 
             $timeout(() => {
-                let el = $element.find(`#chart-${$scope.id}`),
-                    datapie = {
-                        labels: ['New', 'Processed', 'Completed'],
-                        datasets: [{
-                            data: [20, 20, 60],
-                            backgroundColor: ['#f77eb9', '#fdbd88', '#7ebcff']
-                        }]
-                    },
-                    optionpie = {
-                        maintainAspectRatio: false,
-                        responsive: true,
-                        legend: { display: false },
-                        animation: {
-                            animateScale: true,
-                            animateRotate: true
-                        },
-                        tooltips: { enabled: false }
-                    };
+                FileProcessorService.getSummary().then(({ data }) => {
+                    Object.keys(data).forEach(_ => data[_] = Number(data[_]));
+                    $scope.dataMatchingProgress = data;
 
-                let chart = new Chart(el, {
-                    type: 'doughnut',
-                    data: datapie,
-                    options: optionpie
+                    $scope.dataMatchingProgress['dashboard'] = {
+                        processed: ($scope.dataMatchingProgress.processedRecords / $scope.dataMatchingProgress.totalRecords) * 100,
+                        completed: ($scope.dataMatchingProgress.completedRecords / $scope.dataMatchingProgress.totalRecords) * 100
+                    };
+                    $scope.dataMatchingProgress.dashboard['new'] = 100 - ($scope.dataMatchingProgress.dashboard.processed + $scope.dataMatchingProgress.dashboard.completed);
+
+                    let dataChart = angular.copy($scope.dataMatchingProgress.dashboard),
+                        el = $element.find(`#chart-${$scope.id}`),
+                        datapie = {
+                            labels: ['New', 'Processed', 'Completed'],
+                            datasets: [{
+                                data: [
+                                    dataChart.new,
+                                    dataChart.processed,
+                                    dataChart.completed
+                                ],
+                                backgroundColor: ['#f77eb9', '#fdbd88', '#7ebcff']
+                            }]
+                        },
+                        optionpie = {
+                            maintainAspectRatio: false,
+                            responsive: true,
+                            legend: { display: false },
+                            animation: {
+                                animateScale: true,
+                                animateRotate: true
+                            },
+                            tooltips: { enabled: false }
+                        },
+                        chart = new Chart(el, {
+                            type: 'doughnut',
+                            data: datapie,
+                            options: optionpie
+                        });
                 });
+
             });
         };
     }
