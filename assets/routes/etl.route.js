@@ -14,7 +14,7 @@
             { name: 'etl.proximity.detailData', url: '/?{idUnprocessed}', component: 'detailData' },
             { name: 'etl.proximity.matching', url: '/?{data}&{dataMaster}', component: 'matching' },
             { name: 'etl.proximity.reportMatching', url: '/?{idProcessed}', component: 'reportMatching' },
-            { name: 'etl.cleansingRole', url: '/cleansing-role', component: 'cleansingRole' },
+            { name: 'etl.cleansingRule', url: '/cleansing-rule', component: 'cleansingRule' },
             { name: 'etl.historyDataProcessing', url: '/history-data-processing', component: 'historyDataProcessing' },
             { name: 'etl.activityList', url: '/activity-list', component: 'activityList' },
         ]

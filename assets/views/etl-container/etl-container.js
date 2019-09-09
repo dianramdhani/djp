@@ -48,10 +48,10 @@
                     },
                     {
                         type: 'link',
-                        label: 'Cleansing Role',
+                        label: 'Cleansing Rule',
                         icon: 'shield',
                         state: {
-                            to: 'etl.cleansingRole',
+                            to: 'etl.cleansingRule',
                             params: {}
                         },
                         active: false

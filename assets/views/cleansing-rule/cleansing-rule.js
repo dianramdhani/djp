@@ -1,14 +1,14 @@
-require('./cleansing-role.css');
+require('./cleansing-rule.css');
 
 (function () {
     'use strict';
 
     // Usage:
-    // Cleansing Role container.
+    // Cleansing Rule container.
 
     window.app
-        .component('cleansingRole', {
-            template: require('./cleansing-role.html'),
+        .component('cleansingRule', {
+            template: require('./cleansing-rule.html'),
             controller: _
         });
 
