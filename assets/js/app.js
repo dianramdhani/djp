@@ -7,9 +7,18 @@ window.app = angular.module('DJP', ['ui.router', 'ngCookies', 'datatables']);
     window.app
         .run(Run);
 
-    Run.$inject = ['$state'];
-    function Run($state) {
-        $state.go('login');
+    Run.$inject = ['$state', '$rootScope', '$cookies', '$http'];
+    function Run($state, $rootScope, $cookies, $http) {
+        $rootScope['global'] = {
+            user: angular.fromJson($cookies.get('user')),
+            menu: angular.fromJson($cookies.get('menu'))
+        } || {};
+        if (typeof $rootScope.global.user === 'undefined') {
+            $state.go('login');
+        } else {
+            // $http.defaults.headers.common = { token: $rootScope.global.user.token };
+            $state.go('etl');
+        }
     }
 })();
 
@@ -22,6 +31,8 @@ require('../services/util.service');
 require('../services/file-processor.service');
 require('../services/person.service');
 require('../services/excel-rule.service');
+require('../services/normalization-rule.service');
+require('../services/user.service');
 
 // DIRECTIVES
 require('../directives/tr-files.directive');
@@ -39,6 +50,7 @@ require('../views/proximity/proximity');
 require('../views/detail-data/detail-data');
 require('../views/report-matching/report-matching');
 require('../views/matching/matching');
-require('../views/cleansing-role/cleansing-role');
+require('../views/cleansing-rule/cleansing-rule');
+require('../views/cleansing-rule-form/cleansing-rule-form');
 require('../views/history-data-processing/history-data-processing');
 require('../views/activity-list/activity-list');

@@ -10,11 +10,11 @@
             controller: _
         });
 
-    _.$inject = ['$scope'];
-    function _($scope) {
+    _.$inject = ['$scope', '$rootScope'];
+    function _($scope, $rootScope) {
         let $ctrl = this;
         $ctrl.$onInit = () => {
-            $scope.menu = {
+            $scope.menu = $rootScope.global.menu || {
                 sidebar: [
                     // {
                     //     type: 'title | link | has-sub-link',
@@ -48,10 +48,10 @@
                     },
                     {
                         type: 'link',
-                        label: 'Cleansing Role',
+                        label: 'Cleansing Rule',
                         icon: 'shield',
                         state: {
-                            to: 'etl.cleansingRole',
+                            to: 'etl.cleansingRule',
                             params: {}
                         },
                         active: false

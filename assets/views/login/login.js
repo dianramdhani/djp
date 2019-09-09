@@ -12,13 +12,18 @@ require('./login.css');
             controller: _
         });
 
-    _.$inject = ['$scope', '$state'];
-    function _($scope, $state) {
+    _.$inject = ['$scope', '$state', 'UserService'];
+    function _($scope, $state, UserService) {
         let $ctrl = this;
         $ctrl.$onInit = () => { };
 
-        $scope.login = () => {
+        $scope.login = async () => {
+            await UserService.login($scope.username, $scope.password);
             $state.go('etl');
+            /**
+             * @todo
+             * state arahkan sesuai dengan role
+             */
         };
     }
 })();
