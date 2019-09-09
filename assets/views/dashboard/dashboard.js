@@ -10,47 +10,54 @@
             controller: _
         });
 
-    _.$inject = ['$scope', '$timeout', 'FileProcessorService'];
-    function _($scope, $timeout, FileProcessorService) {
+    _.$inject = ['$scope', '$timeout', '$element', 'FileProcessorService'];
+    function _($scope, $timeout, $element, FileProcessorService) {
         var $ctrl = this;
         $ctrl.$onInit = () => {
-            $timeout(async () => {
-                $scope.files = await FileProcessorService.loadFiles(100).then(({ data }) => {
-                    let content = data.content,
-                        totalFiles = content.length,
-                        totalMerged = content.reduce((acc, obj) => acc + obj.mergedRecords, 0),
-                        totalRecords = content.reduce((acc, obj) => acc + obj.totalRecords, 0),
-                        mergedPercentage = totalMerged / totalRecords * 100;
-                    return { totalFiles, totalMerged, totalRecords, mergedPercentage };
+            $scope.id = $scope.$id;
+            $scope.dataMatchingProgress = {};
+
+            $timeout(() => {
+                FileProcessorService.getSummary().then(({ data }) => {
+                    Object.keys(data).forEach(_ => data[_] = Number(data[_]));
+                    $scope.dataMatchingProgress = data;
+
+                    $scope.dataMatchingProgress['dashboard'] = {
+                        processed: ($scope.dataMatchingProgress.processedRecords / $scope.dataMatchingProgress.totalRecords) * 100,
+                        completed: ($scope.dataMatchingProgress.completedRecords / $scope.dataMatchingProgress.totalRecords) * 100
+                    };
+                    $scope.dataMatchingProgress.dashboard['new'] = 100 - ($scope.dataMatchingProgress.dashboard.processed + $scope.dataMatchingProgress.dashboard.completed);
+
+                    let dataChart = angular.copy($scope.dataMatchingProgress.dashboard),
+                        el = $element.find(`#chart-${$scope.id}`),
+                        datapie = {
+                            labels: ['New', 'Processed', 'Completed'],
+                            datasets: [{
+                                data: [
+                                    dataChart.new,
+                                    dataChart.processed,
+                                    dataChart.completed
+                                ],
+                                backgroundColor: ['#f77eb9', '#fdbd88', '#7ebcff']
+                            }]
+                        },
+                        optionpie = {
+                            maintainAspectRatio: false,
+                            responsive: true,
+                            legend: { display: false },
+                            animation: {
+                                animateScale: true,
+                                animateRotate: true
+                            },
+                            tooltips: { enabled: false }
+                        },
+                        chart = new Chart(el, {
+                            type: 'doughnut',
+                            data: datapie,
+                            options: optionpie
+                        });
                 });
-                $scope.$apply();
 
-                var datapie = {
-                    labels: ['Processed', 'Unprocessed'],
-                    datasets: [{
-                        data: [$scope.files.mergedPercentage, 100 - $scope.files.mergedPercentage],
-                        backgroundColor: ['#f77eb9', '#7ebcff']
-                    }]
-                };
-
-                var optionpie = {
-                    maintainAspectRatio: false,
-                    responsive: true,
-                    legend: {
-                        display: false,
-                    },
-                    animation: {
-                        animateScale: true,
-                        animateRotate: true
-                    }
-                };
-
-                var ctx2 = document.getElementById('chartDonut');
-                var myDonutChart = new Chart(ctx2, {
-                    type: 'doughnut',
-                    data: datapie,
-                    options: optionpie
-                });
             });
         };
     }

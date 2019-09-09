@@ -12,6 +12,7 @@
         this.retrieveRecords = retrieveRecords;
         this.uploadFile = uploadFile;
         this.upload = upload;
+        this.getSummary = getSummary;
 
         const url = CONFIG.serviceAddress;
 
@@ -70,6 +71,13 @@
                 transformResponse: angular.identity,
                 headers: { 'Content-Type': undefined }
             });
+        }
+
+        /**
+         * Summary for dashboard
+         */
+        function getSummary() {
+            return $http.get(`${url}/file/summary`);
         }
     }
 })();

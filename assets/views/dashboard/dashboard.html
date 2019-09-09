@@ -8,38 +8,57 @@
     </nav>
 </div>
 <div class="row row-xs">
-    <div class="col-md-6 col-lg-4 col-xl-3 mg-t-10 mg-lg-t-0">
+    <div class="col-xl-8">
         <div class="card">
-            <div class="card-header">
-                <h6 class="mg-b-0">Load Data</h6>
-            </div>
-            <div class="card-body pd-lg-25">
-                <div class="chart-seven"><canvas id="chartDonut"></canvas></div>
-            </div>
-            <div class="card-footer pd-20">
-                <div class="row">
-                    <div class="col-6">
-                        <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 tx-nowrap mg-b-5">Processed
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <div class="wd-10 ht-10 rounded-circle bg-pink mg-r-5"></div>
-                            <h5 class="tx-normal tx-rubik mg-b-0">{{files.totalMerged}} <small
-                                    class="tx-color-04">{{files.mergedPercentage | number:2}}%</small></h5>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 mg-b-5">Unprocessed</p>
-                        <div class="d-flex align-items-center">
-                            <div class="wd-10 ht-10 rounded-circle bg-primary mg-r-5"></div>
-                            <h5 class="tx-normal tx-rubik mg-b-0">{{files.totalRecords - files.totalMerged}} <small
-                                    class="tx-color-04">{{100 - files.mergedPercentage | number:2}}%</small></h5>
-                        </div>
+            <h6 class="card-header">Matching Progress</h6>
+            <div class="card-body row row-xs">
+                <div class="col-md-8 ht-300">
+                    <canvas ng-attr-id="{{'chart-'+id}}"></canvas>
+                </div>
+                <div class="col-md-4 mg-t-50 mg-md-t-0 row row-xs">
+                    <ul class="col-6 col-md-12 activity tx-13">
+                        <li class="activity-item">
+                            <div class="activity-icon bg-pink-light tx-pink">
+                                <i data-feather="circle"></i>
+                            </div>
+                            <div class="activity-body">
+                                <small class="tx-color-03">New</small>
+                                <h2 class="mg-b-0">{{dataMatchingProgress.dashboard.new | number: 0}}%</h2>
+                                <span
+                                    class="mg-l-30">{{dataMatchingProgress.totalRecords - (dataMatchingProgress.processedRecords + dataMatchingProgress.completedRecords)}}
+                                    Records</span>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon bg-warning-light tx-orange">
+                                <i data-feather="arrow-right-circle"></i>
+                            </div>
+                            <div class="activity-body">
+                                <small class="tx-color-03">Processed</small>
+                                <h2 class="mg-b-0">{{dataMatchingProgress.dashboard.processed | number: 0}}%</h2>
+                                <span class="mg-l-30">{{dataMatchingProgress.processedRecords}} Records</span>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon bg-primary-light tx-primary">
+                                <i data-feather="check-circle"></i>
+                            </div>
+                            <div class="activity-body">
+                                <small class="tx-color-03">Completed</small>
+                                <h2 class="mg-b-0">{{dataMatchingProgress.dashboard.completed | number: 0}}%</h2>
+                                <span class="mg-l-30">{{dataMatchingProgress.completedRecords}} Records</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="col-6 col-md-12 mg-md-t-20">
+                        <small class="tx-color-03">From</small>
+                        <ul>
+                            <li><strong>Processed Files :</strong> {{dataMatchingProgress.totalFiles}}</li>
+                            <li><strong>Completed Files :</strong> {{dataMatchingProgress.completedFiles}}</li>
+                            <li><strong>Total Files :</strong> {{dataMatchingProgress.totalFiles}}</li>
+                        </ul>
                     </div>
                 </div>
-                <p>
-                    <label class="tx-10 tx-uppercase tx-medium tx-color-03 mg-t-50 mg-r-5">Total Files:</label>
-                    <span class="tx-normal tx-rubik tx-18">{{files.totalFiles}}</span>
-                </p>
             </div>
         </div>
     </div>
