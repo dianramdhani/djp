@@ -18,7 +18,10 @@ require('./cleansing-rule.css');
         $ctrl.$onInit = () => {
             $scope.dtOptions = DTOptionsBuilder
                 .fromFnPromise(() => {
-                    return NormalizationRuleService.findAll().then(_ => _.data || []);
+                    return NormalizationRuleService.findAll().then(_ => {
+                        console.log(_.data);
+                        return _.data || [];
+                    });
                 })
                 .withOption('lengthMenu', [5, 10, 20])
                 .withOption('createdRow', (row, _, __) => { $compile(angular.element(row).contents())($scope); })
@@ -37,11 +40,24 @@ require('./cleansing-rule.css');
                 DTColumnBuilder.newColumn('fieldName').withTitle('Field Name'),
                 DTColumnBuilder.newColumn('oldContent').withTitle('Old Content'),
                 DTColumnBuilder.newColumn('newContent').withTitle('New Content'),
+                DTColumnBuilder.newColumn('word').withTitle('Word')
+                    .renderWith((data, _, { id }, ___) => {
+                        return `
+                            <div class="custom-control custom-switch pd-l-15">
+                                <input type="checkbox" class="custom-control-input" id="sw-${id}" ng-click="wordToggle('${id}')" ${data ? 'checked' : ''}>
+                                <label class="custom-control-label" for="sw-${id}"></label>
+                            </div>
+                        `;
+                    }),
             ];
         };
 
         $scope.addRule = () => {
             console.log('hallo indonesia');
+        };
+
+        $scope.wordToggle = (id) => {
+            console.log(id);
         };
     }
 })();
