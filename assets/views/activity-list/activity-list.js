@@ -13,6 +13,8 @@
     _.$inject = [];
     function _() {
         let $ctrl = this;
-        $ctrl.$onInit = () => { };
+        $ctrl.$onInit = () => {
+            feather.replace();
+        };
     }
 })();
