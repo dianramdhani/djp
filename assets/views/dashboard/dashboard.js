@@ -56,6 +56,8 @@
                             data: datapie,
                             options: optionpie
                         });
+
+                    feather.replace();
                 });
 
             });
