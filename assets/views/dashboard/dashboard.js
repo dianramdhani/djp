@@ -38,7 +38,7 @@
                                     dataChart.processed,
                                     dataChart.completed
                                 ],
-                                backgroundColor: ['#f77eb9', '#fdbd88', '#7ebcff']
+                                backgroundColor: ['#f10075', '#fd7e14', '#0168fa']
                             }]
                         },
                         optionpie = {
