@@ -46,7 +46,7 @@ require('./cleansing-rule.css');
                         return `
                             <div class="custom-control custom-switch pd-l-15">
                                 <input type="checkbox" class="custom-control-input" id="sw-${id}" disabled ${data ? 'checked' : ''}>
-                                <label class="custom-control-label" for="sw-${id}"></label>
+                                <label class="custom-control-label" for="sw-${id}" title="Exact word. Please reconfig to change!"></label>
                             </div>
                         `;
                     }),
