@@ -10,6 +10,7 @@
         this.findProximityPersonByPersonId = findProximityPersonByPersonId;
         this.findExactPersonByPersonId = findExactPersonByPersonId;
         this.merge = merge;
+        this.findExactPerson = findExactPerson;
 
         const url = CONFIG.serviceAddress;
 
@@ -43,6 +44,13 @@
          */
         function merge(person) {
             return $http.post(`${url}/person/merge`, person);
+        }
+
+        /**
+         * Url find exact person.
+         */
+        function findExactPerson(limit) {
+            return $http.get(`${url}/person/exact`, { limit });
         }
     }
 })();
