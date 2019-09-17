@@ -23,7 +23,7 @@
                 .fromFnPromise(() => {
                     return FileProcessorService.retrieveRecords($stateParams.idFile).then(_ => _.data || []);
                 })
-                .withOption('lengthMenu', [5, 10, 20])
+                .withOption('lengthMenu', [10, 20, 30])
                 .withOption('createdRow', (row, _, __) => { $compile(angular.element(row).contents())($scope); })
                 .withPaginationType('simple_numbers');
             $scope.dtColumns = [

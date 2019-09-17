@@ -8,11 +8,9 @@
     </nav>
 </div>
 <div class="row row-xs">
-    <div class="col-lg-5">
+    <div class="col-lg-6">
         <div class="card">
-            <div class="card-header pd-t-20 pd-b-0 bd-b-0">
-                <h6>Upload a File</h6>
-            </div>
+            <h6 class="card-header">Upload a File</h6>
             <div class="card-body tx-12">
                 <div class="row">
                     <label class="col-sm-4 col-form-label pd-r-0 tx-gray-500">Attachments</label>
@@ -47,17 +45,34 @@
             </div>
         </div>
     </div>
-    <div class="col-12 mg-t-10">
+    <div class="col-lg-6 mg-t-10 mg-lg-t-0">
         <div class="card">
-            <div class="card-header pd-t-20 pd-b-0 bd-b-0">
-                <h6>List Files</h6>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-dashboard mg-t-10 mg-b-0" datatable="" dt-options="dtOptions"
-                        dt-columns="dtColumns" dt-instance="dtInstance"></table>
-                </div>
-            </div>
+            <h6 class="card-header">Status Files</h6>
+            <ul class="card-body list-unstyled lh-7 mg-b-0 pd-md-x-200 pd-lg-x-100">
+                <li class="d-flex justify-content-between">
+                    <span class="tx-gray-500">Processed Files</span>
+                    <span>{{summary.totalFiles}}</span>
+                </li>
+                <li class="d-flex justify-content-between">
+                    <span class="tx-gray-500">Completed Files</span>
+                    <span>{{summary.completedFiles}}</span>
+                </li>
+                <li class="d-flex justify-content-between">
+                    <span class="tx-gray-500">Total Files</span>
+                    <span>{{summary.totalFiles}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="card mg-t-10">
+    <div class="card-header pd-t-20 pd-b-0 bd-b-0">
+        <h6>List Files</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-dashboard mg-t-10 mg-b-0" datatable="" dt-options="dtOptions"
+                dt-columns="dtColumns" dt-instance="dtInstance"></table>
         </div>
     </div>
 </div>

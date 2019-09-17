@@ -24,7 +24,7 @@
                     });
                     return q.promise;
                 })
-                .withOption('lengthMenu', [5, 10, 20])
+                .withOption('lengthMenu', [10, 20, 30])
                 .withOption('order', [[0, 'desc']])
                 .withOption('createdRow', (row, _, __) => { $compile(angular.element(row).contents())($scope); })
                 .withPaginationType('simple_numbers');

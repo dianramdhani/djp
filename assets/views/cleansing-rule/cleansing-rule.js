@@ -23,7 +23,7 @@ require('./cleansing-rule.css');
                         return data;
                     });
                 })
-                .withOption('lengthMenu', [5, 10, 20])
+                .withOption('lengthMenu', [10, 20, 30])
                 .withOption('createdRow', (row, _, __) => { $compile(angular.element(row).contents())($scope); })
                 .withOption('drawCallback', () => feather.replace())
                 .withOption('initComplete', () => {

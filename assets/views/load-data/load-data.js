@@ -10,10 +10,11 @@
             controller: _
         });
 
-    _.$inject = ['$scope', '$state', '$compile', '$element', 'DTOptionsBuilder', 'DTColumnBuilder', 'FileProcessorService', 'UtilService'];
-    function _($scope, $state, $compile, $element, DTOptionsBuilder, DTColumnBuilder, FileProcessorService, UtilService) {
+    _.$inject = ['$scope', '$state', '$compile', '$element', '$timeout', 'DTOptionsBuilder', 'DTColumnBuilder', 'FileProcessorService', 'UtilService', 'CONFIG'];
+    function _($scope, $state, $compile, $element, $timeout, DTOptionsBuilder, DTColumnBuilder, FileProcessorService, UtilService, CONFIG) {
         let $ctrl = this;
         $ctrl.$onInit = () => {
+            $timeout(() => $state.current.name === 'etl.loadData' ? $state.reload() : angular.noop(), CONFIG.reloadTimeMs);
             $scope.dtOptions = DTOptionsBuilder.newOptions()
                 .withOption('ajax', {
                     url: FileProcessorService.urlSearch(),
@@ -41,7 +42,7 @@
                 })
                 .withOption('processing', true)
                 .withOption('serverSide', true)
-                .withOption('lengthMenu', [5, 10, 20])
+                .withOption('lengthMenu', [10, 20, 30])
                 .withOption('order', [[0, 'desc']])
                 .withOption('createdRow', (row, _, __) => { $compile(angular.element(row).contents())($scope); })
                 .withOption('language', { search: 'File Search' })
@@ -66,6 +67,10 @@
                     })
             ];
             $scope.dtInstance = {};
+
+            FileProcessorService.getSummary().then(({ data }) => {
+                $scope.summary = data;
+            });
         };
 
         $scope.showData = () => {

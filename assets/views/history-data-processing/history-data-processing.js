@@ -18,7 +18,7 @@
                 .fromFnPromise(() => {
                     return PersonService.findExactPerson().then(_ => _.data.content);
                 })
-                .withOption('lengthMenu', [5, 10, 20])
+                .withOption('lengthMenu', [10, 20, 30])
                 .withOption('createdRow', (row, _, __) => { $compile(angular.element(row).contents())($scope); })
                 .withPaginationType('simple_numbers');
             $scope.dtColumns = [
