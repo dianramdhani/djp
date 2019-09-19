@@ -15,6 +15,28 @@
         <span class="tx-13 link-03">File Name: {{filename}}</span>
     </div>
     <div class="card-body">
+        <strong class="tx-gray-500">File Statistic</strong>
+        <div class="row row-xxs">
+            <ul class="list-unstyled lh-7 col-md-4 mg-b-5">
+                <li class="d-flex justify-content-between">
+                    <span class="tx-gray-500">Invalid Records</span>
+                    <span class="ng-binding">100</span>
+                </li>
+                <li class="d-flex justify-content-between">
+                    <span class="tx-gray-500">Null Fields</span>
+                    <span class="ng-binding">100</span>
+                </li>
+                <li class="d-flex justify-content-between">
+                    <span class="tx-gray-500">Invalid NPWP</span>
+                    <span class="ng-binding">100</span>
+                </li>
+            </ul>
+        </div>
+        <div class="row row-xxs mg-b-20">
+            <div class="col-md-4 text-right">
+                <button class="btn btn-sm btn-primary">Export Invalid</button>
+            </div>
+        </div>
         <div class="table-responsive">
             <table class="table table-dashboard mg-t-10 mg-b-0 tr-fixed-table" datatable="" dt-options="dtOptions"
                 dt-columns="dtColumns">
