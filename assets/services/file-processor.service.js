@@ -13,6 +13,7 @@
         this.uploadFile = uploadFile;
         this.upload = upload;
         this.getSummary = getSummary;
+        this.retrieveStatistics = retrieveStatistics;
 
         const url = CONFIG.serviceAddress;
 
@@ -78,6 +79,14 @@
          */
         function getSummary() {
             return $http.get(`${url}/file/summary`);
+        }
+
+        /**
+         * Get statistics of file.
+         * @param {String} id - Id file.
+         */
+        function retrieveStatistics(id) {
+            return $http.get(`${url}/file/${id}/statistics`);
         }
     }
 })();

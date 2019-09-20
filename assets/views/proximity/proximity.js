@@ -19,6 +19,11 @@
                     $scope.filename = data.filename;
                 });
 
+            FileProcessorService.retrieveStatistics($stateParams.idFile)
+                .then(({ data }) => {
+                    $scope.statistics = data;
+                });
+
             $scope.dtOptions = DTOptionsBuilder
                 .fromFnPromise(() => {
                     return FileProcessorService.retrieveRecords($stateParams.idFile).then(_ => _.data || []);

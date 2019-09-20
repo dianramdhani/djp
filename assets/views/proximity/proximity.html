@@ -9,34 +9,113 @@
     </nav>
 </div>
 
-<div class="card">
+<div class="row row-xxs">
+    <div class="col-lg-5 col-md-6 card">
+        <div class="card-header d-sm-flex align-items-start justify-content-between bd-b-0">
+            <h6 class="lh-5 mg-b-0">File Statistic</h6>
+            <span class="tx-13 link-03">File Name: {{filename}}</span>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-dashboard mg-b-0 tr-fixed-table">
+                <tr>
+                    <th>Invalid NIK</th>
+                    <td class="text-right">{{statistics.invalidNik}}</td>
+                    <td class="wd-60">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="invalidNik">
+                            <label class="custom-control-label" for="invalidNik"></label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Invalid NPWP</th>
+                    <td class="text-right">{{statistics.invalidNpwp}}</td>
+                    <td class="wd-60">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="invalidNpwp">
+                            <label class="custom-control-label" for="invalidNpwp"></label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Null Address</th>
+                    <td class="text-right">{{statistics.nulladdress}}</td>
+                    <td class="wd-60">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="nulladdress">
+                            <label class="custom-control-label" for="nulladdress"></label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Null Date of Birth</th>
+                    <td class="text-right">{{statistics.nulldob}}</td>
+                    <td class="wd-60">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="nulldob">
+                            <label class="custom-control-label" for="nulldob"></label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Null Name</th>
+                    <td class="text-right">{{statistics.nullname}}</td>
+                    <td class="wd-60">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="nullname">
+                            <label class="custom-control-label" for="nullname"></label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Null NIK</th>
+                    <td class="text-right">{{statistics.nullnik}}</td>
+                    <td class="wd-60">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="nullnik">
+                            <label class="custom-control-label" for="nullnik"></label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Null NPWP</th>
+                    <td class="text-right">{{statistics.nullnpwp}}</td>
+                    <td class="wd-60">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="nullnpwp">
+                            <label class="custom-control-label" for="nullnpwp"></label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Null Place of Birth</th>
+                    <td class="text-right">{{statistics.nullpob}}</td>
+                    <td class="wd-60">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="nullpob">
+                            <label class="custom-control-label" for="nullpob"></label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    <td class="text-right">{{statistics.total}}</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="card-footer text-right">
+            <button class="btn btn-sm btn-primary pd-y-2">Export File</button>
+        </div>
+    </div>
+</div>
+
+<div class="card mg-t-10">
     <div class="card-header d-sm-flex align-items-start justify-content-between pd-b-0 bd-b-0">
         <h6 class="lh-5 mg-b-0">List Data</h6>
         <span class="tx-13 link-03">File Name: {{filename}}</span>
     </div>
     <div class="card-body">
-        <strong class="tx-gray-500">File Statistic</strong>
-        <div class="row row-xxs">
-            <ul class="list-unstyled lh-7 col-md-4 mg-b-5">
-                <li class="d-flex justify-content-between">
-                    <span class="tx-gray-500">Invalid Records</span>
-                    <span class="ng-binding">100</span>
-                </li>
-                <li class="d-flex justify-content-between">
-                    <span class="tx-gray-500">Null Fields</span>
-                    <span class="ng-binding">100</span>
-                </li>
-                <li class="d-flex justify-content-between">
-                    <span class="tx-gray-500">Invalid NPWP</span>
-                    <span class="ng-binding">100</span>
-                </li>
-            </ul>
-        </div>
-        <div class="row row-xxs mg-b-20">
-            <div class="col-md-4 text-right">
-                <button class="btn btn-sm btn-primary">Export Invalid</button>
-            </div>
-        </div>
         <div class="table-responsive">
             <table class="table table-dashboard mg-t-10 mg-b-0 tr-fixed-table" datatable="" dt-options="dtOptions"
                 dt-columns="dtColumns">
