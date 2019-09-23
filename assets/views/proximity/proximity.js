@@ -61,7 +61,7 @@
 
             var anchor = document.createElement('a');
             anchor.href = URL.createObjectURL(blob);
-            anchor.download = $stateParams.idFile;
+            anchor.download = `${$scope.filename} - invalid.xlsx`;
             document.body.appendChild(anchor);
             anchor.target = '_blank';
             anchor.click();
