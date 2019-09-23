@@ -36,6 +36,7 @@ require('../services/user.service');
 
 // DIRECTIVES
 require('../directives/tr-files.directive');
+require('../directives/tr-statistics-selected.directive');
 
 // COMPONENTS
 require('../components/tr-wrapper/tr-wrapper');

@@ -14,6 +14,9 @@
     function _($stateParams, $scope, $compile, DTOptionsBuilder, DTColumnBuilder, FileProcessorService) {
         let $ctrl = this;
         $ctrl.$onInit = () => {
+            // To export array to export file.
+            $scope.exportType = [];
+
             FileProcessorService.retrieve($stateParams.idFile)
                 .then(({ data }) => {
                     $scope.filename = data.filename;
@@ -47,6 +50,21 @@
                         `;
                     })
             ];
+        };
+
+        $scope.exportFile = async () => {
+            let res = await FileProcessorService.exportInvalid($stateParams.idFile, $scope.exportType);
+            const blob = new Blob([new Uint8Array(res.data)], {
+                type: res.headers('Content-Type')
+            });
+            const URL = window.URL || window.MozURL || window.webkitURL || window.MSURL || window.OURL;
+
+            var anchor = document.createElement('a');
+            anchor.href = URL.createObjectURL(blob);
+            anchor.download = $stateParams.idFile;
+            document.body.appendChild(anchor);
+            anchor.target = '_blank';
+            anchor.click();
         };
     }
 })();
