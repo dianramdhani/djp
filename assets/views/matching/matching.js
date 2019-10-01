@@ -20,6 +20,10 @@ require('./matching.css');
         $ctrl.$onInit = () => {
             $scope.data = angular.fromJson($stateParams.data);
             $scope.dataMaster = angular.fromJson($stateParams.dataMaster);
+            PersonService.similarity($scope.data, $scope.dataMaster).then(({ data }) => {
+                $scope.score = data;
+            });
+            $scope.method = 'levenshtein';
             $scope.dataMerge = {
                 personId: $scope.data.id,
                 originId: $scope.dataMaster.id,
