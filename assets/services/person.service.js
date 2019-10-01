@@ -11,6 +11,7 @@
         this.findExactPersonByPersonId = findExactPersonByPersonId;
         this.merge = merge;
         this.findExactPerson = findExactPerson;
+        this.similarity = similarity;
 
         const url = CONFIG.serviceAddress;
 
@@ -51,6 +52,33 @@
          */
         function findExactPerson(limit) {
             return $http.get(`${url}/person/exact`, { limit });
+        }
+
+        /**
+         * Show similarity score.
+         * @param {Array} persons - Data persons.
+         */
+        function similarity(data, dataMaster) {
+            let _data = angular.copy(data),
+                _dataMaster = angular.copy(dataMaster);
+            _data = {
+                'NPWP': _data['NPWP'],
+                'NIK': _data['NIK'],
+                'Full Name': _data['Full Name'],
+                'Place of Birth': _data['Place of Birth'],
+                'Date of Birth': _data['Date of Birth'],
+                'Full Address': _data['Full Address']
+            };
+            _dataMaster = {
+                'NPWP': _dataMaster['npwp'],
+                'NIK': _dataMaster['nik'],
+                'Full Name': _dataMaster['name'],
+                'Place of Birth': _dataMaster['placeOfBirth'],
+                'Date of Birth': _dataMaster['dateOfBirth'],
+                'Full Address': _dataMaster['address']
+            };
+            console.log(data, dataMaster);
+            return $http.post(`${url}/person/similarity`, [_data, _dataMaster]);
         }
     }
 })();

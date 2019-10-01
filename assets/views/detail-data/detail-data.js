@@ -25,17 +25,17 @@
                     return q.promise;
                 })
                 .withOption('lengthMenu', [10, 20, 30])
-                .withOption('order', [[0, 'desc']])
+                .withOption('order', [[1, 'desc']])
                 .withOption('createdRow', (row, _, __) => { $compile(angular.element(row).contents())($scope); })
                 .withPaginationType('simple_numbers');
             $scope.dtColumns = [
-                DTColumnBuilder.newColumn('score').withTitle('Score').withClass('wd-100'),
                 DTColumnBuilder.newColumn('npwp').withTitle('NPWP').withOption('defaultContent', '').withClass('wd-150'),
                 DTColumnBuilder.newColumn('nik').withTitle('NIK').withOption('defaultContent', '').withClass('wd-150'),
                 DTColumnBuilder.newColumn('name').withTitle('Name').withOption('defaultContent', '').withClass('wd-150'),
                 DTColumnBuilder.newColumn('placeOfBirth').withTitle('Place of Birth').withOption('defaultContent', '').withClass('wd-150'),
                 DTColumnBuilder.newColumn('dateOfBirth').withTitle('Date of Birth').withOption('defaultContent', '').withClass('wd-150'),
                 DTColumnBuilder.newColumn('address').withTitle('Address').withOption('defaultContent', '').withClass('wd-200'),
+                DTColumnBuilder.newColumn('score').withTitle('Score').withClass('wd-100'),
                 DTColumnBuilder.newColumn(null).withTitle('').notSortable().withClass('wd-80 text-center')
                     .renderWith((data, _, __, ___) => {
                         return `<button class="btn btn-primary tr-btn-table" ng-click="matching('${data.id}')">Matching</button>`;
