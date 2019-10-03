@@ -10,8 +10,8 @@
             controller: _
         });
 
-    _.$inject = ['$stateParams', '$scope', '$compile', 'DTOptionsBuilder', 'DTColumnBuilder', 'FileProcessorService'];
-    function _($stateParams, $scope, $compile, DTOptionsBuilder, DTColumnBuilder, FileProcessorService) {
+    _.$inject = ['$stateParams', '$scope', '$compile', '$timeout', '$element', 'DTOptionsBuilder', 'DTColumnBuilder', 'FileProcessorService'];
+    function _($stateParams, $scope, $compile, $timeout, $element, DTOptionsBuilder, DTColumnBuilder, FileProcessorService) {
         let $ctrl = this;
         $ctrl.$onInit = () => {
             // To export array to export file.
@@ -35,13 +35,11 @@
                 .withOption('createdRow', (row, _, __) => { $compile(angular.element(row).contents())($scope); })
                 .withPaginationType('simple_numbers');
             $scope.dtColumns = [
-                DTColumnBuilder.newColumn('NPWP').withTitle('NPWP').withClass('wd-150'),
-                DTColumnBuilder.newColumn('NIK').withTitle('NIK').withClass('wd-150'),
-                DTColumnBuilder.newColumn('Full Name').withTitle('Full Name').withClass('wd-150'),
-                DTColumnBuilder.newColumn('Place of Birth').withTitle('Place of Birth').withClass('wd-150'),
-                DTColumnBuilder.newColumn('Date of Birth').withTitle('Date of Birth').withClass('wd-150'),
-                DTColumnBuilder.newColumn('Full Address').withTitle('Full Address').withClass('wd-200'),
-                DTColumnBuilder.newColumn('status').withTitle('Status').withClass('wd-100'),
+                DTColumnBuilder.newColumn('NPWP').withTitle('NPWP').withClass('wd-150 proximity-detail'),
+                DTColumnBuilder.newColumn('NIK').withTitle('NIK').withClass('wd-150 proximity-detail'),
+                DTColumnBuilder.newColumn('Full Name').withTitle('Full Name').withClass('wd-150 proximity-detail'),
+                DTColumnBuilder.newColumn('Date of Birth').withTitle('Date of Birth').withClass('wd-150 proximity-detail'),
+                DTColumnBuilder.newColumn('status').withTitle('Status').withClass('wd-100 proximity-detail'),
                 DTColumnBuilder.newColumn(null).withTitle('').notSortable().withClass('wd-100 text-center')
                     .renderWith((data, _, __, ___) => {
                         return `
@@ -50,6 +48,54 @@
                         `;
                     })
             ];
+            $scope.dtInstance = {};
+
+            $timeout(() => {
+                const format = (data) => {
+                    return `
+                    <table class="table mg-b-0">
+                        <tbody>
+                            <tr>
+                                <th class="wd-150">NPWP</th>
+                                <td>${data['NPWP']}</td>
+                            </tr>
+                            <tr>
+                                <th class="wd-150">NIK</th>
+                                <td>${data['NIK']}</td>
+                            </tr>
+                            <tr>
+                                <th class="wd-150">Full Name</th>
+                                <td>${data['Full Name']}</td>
+                            </tr>
+                            <tr>
+                                <th class="wd-150">Place of Birth</th>
+                                <td>${data['Place of Birth']}</td>
+                            </tr>
+                            <tr>
+                                <th class="wd-150">Date of Birth</th>
+                                <td>${data['Date of Birth']}</td>
+                            </tr>
+                            <tr>
+                                <th class="wd-150">Full Address</th>
+                                <td>${data['Full Address']}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    `
+                };
+
+                $element.on('click', '.proximity-detail', function () {
+                    let tr = angular.element(this).closest('tr'),
+                        row = $scope.dtInstance.DataTable.row(tr);
+                    if (row.child.isShown()) {
+                        row.child.hide();
+                        tr.removeClass('shown');
+                    } else {
+                        row.child(format(row.data())).show();
+                        tr.addClass('shown');
+                    }
+                });
+            });
         };
 
         $scope.exportFile = async () => {
