@@ -57,6 +57,26 @@
                         active: false
                     },
                     {
+                        type: 'link',
+                        label: 'Data Preprocessing',
+                        icon: 'code',
+                        state: {
+                            to: 'etl.dataPreprocessing',
+                            params: {}
+                        },
+                        active: false
+                    },
+                    {
+                        type: 'link',
+                        label: 'Master Data Upload',
+                        icon: 'upload-cloud',
+                        state: {
+                            to: 'etl.masterDataUpload',
+                            params: {}
+                        },
+                        active: false
+                    },
+                    {
                         type: 'title',
                         label: 'Master Data Management'
                     },

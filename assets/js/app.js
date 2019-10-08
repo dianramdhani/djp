@@ -33,6 +33,7 @@ require('../services/person.service');
 require('../services/excel-rule.service');
 require('../services/normalization-rule.service');
 require('../services/user.service');
+require('../services/file-preprocessor.service');
 
 // DIRECTIVES
 require('../directives/tr-files.directive');
@@ -55,3 +56,5 @@ require('../views/cleansing-rule/cleansing-rule');
 require('../views/cleansing-rule-form/cleansing-rule-form');
 require('../views/history-data-processing/history-data-processing');
 require('../views/activity-list/activity-list');
+require('../views/data-preprocessing/data-preprocessing');
+require('../views/master-data-upload/master-data-upload');
