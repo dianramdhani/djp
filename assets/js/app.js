@@ -56,3 +56,4 @@ require('../views/cleansing-rule-form/cleansing-rule-form');
 require('../views/history-data-processing/history-data-processing');
 require('../views/activity-list/activity-list');
 require('../views/data-preprocessing/data-preprocessing');
+require('../views/master-data-upload/master-data-upload');
