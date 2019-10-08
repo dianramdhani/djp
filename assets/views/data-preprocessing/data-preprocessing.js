@@ -10,8 +10,8 @@
             controller: _,
         });
 
-    _.$inject = ['$scope'];
-    function _($scope) {
+    _.$inject = ['$scope', 'PrefileService'];
+    function _($scope, PrefileService) {
         let $ctrl = this;
         $ctrl.$onInit = () => {
             // To export array to export file.
