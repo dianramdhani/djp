@@ -17,6 +17,7 @@
             { name: 'etl.cleansingRule', url: '/cleansing-rule', component: 'cleansingRule' },
             { name: 'etl.historyDataProcessing', url: '/history-data-processing', component: 'historyDataProcessing' },
             { name: 'etl.activityList', url: '/activity-list', component: 'activityList' },
+            { name: 'etl.dataPreprocessing', url: '/data-preprocessing', component: 'dataPreprocessing' },
         ]
             .forEach(state => $stateProvider.state(state));
     }
