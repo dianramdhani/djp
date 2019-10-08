@@ -10,9 +10,17 @@
             controller: _,
         });
 
-    _.$inject = [];
-    function _() {
+    _.$inject = ['$scope'];
+    function _($scope) {
         let $ctrl = this;
         $ctrl.$onInit = () => { };
+
+        $scope.upload = () => {
+            console.log($scope.files);
+        }
+
+        $scope.exportFile = () => {
+            console.log('test export file');
+        }
     }
 })();
