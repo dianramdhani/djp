@@ -25,54 +25,50 @@
                 <div class="pd-t-15" ng-if="files">
                     <label class="tx-gray-500">List Files</label>
                     <div class="table-responsive">
-                        <table class="table mg-b-0">
+                        <table class="table">
                             <thead>
                                 <tr>
                                     <th>Name</th>
                                     <th class="tx-right">Size File (Byte)</th>
-                                    <th class="wd-150"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="file in files track by $index">
+                                <tr ng-repeat="file in files">
                                     <td>{{file.name}}</td>
                                     <td class="tx-right">{{file.size}}</td>
-                                    <td class="tx-right">
-                                        <button class="btn btn-primary tr-btn-table"
-                                            ng-click="showStatistic($index)">Show Statistic</button>
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="text-right">
+                        <button class="btn btn-primary tr-btn-form pd-t-15" ng-click="upload()">Upload</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-6" ng-if="statistics">
+    <div id="statistics" class="col-lg-6" ng-if="statistics">
         <div class="card">
             <div class="card-header d-sm-flex align-items-start justify-content-between bd-b-0">
                 <h6 class="lh-5 mg-b-0">File Statistic</h6>
-                <span class="tx-13 link-03">File Name: {{statistics.resUploadFile.filename}}</span>
+                <span class="tx-13 link-03">File Name: {{statistics.file.filename}}</span>
             </div>
             <div class="table-responsive">
                 <table class="table table-dashboard mg-b-0 tr-fixed-table">
                     <tr>
                         <th>Valid Data</th>
-                        <!-- <td class="text-right">{{statistics.invalidNik}}</td> -->
-                        <td class="text-right">validData</td>
+                        <td class="text-right">{{statistics.valid}}</td>
                         <td class="wd-60">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="validData"
+                                <input type="checkbox" class="custom-control-input" id="valid"
                                     tr-statistics-selected="exportType">
-                                <label class="custom-control-label" for="validData"></label>
+                                <label class="custom-control-label" for="valid"></label>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <th>Invalid NIK</th>
                         <td class="text-right">{{statistics.invalidNik}}</td>
-                        <!-- <td class="text-right">invalidNik</td> -->
                         <td class="wd-60">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="invalidNik"
@@ -84,7 +80,6 @@
                     <tr>
                         <th>Invalid NPWP</th>
                         <td class="text-right">{{statistics.invalidNpwp}}</td>
-                        <!-- <td class="text-right">invalidNpwp</td> -->
                         <td class="wd-60">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="invalidNpwp"
@@ -96,7 +91,6 @@
                     <tr>
                         <th>Null Address</th>
                         <td class="text-right">{{statistics.nulladdress}}</td>
-                        <!-- <td class="text-right">nulladdress</td> -->
                         <td class="wd-60">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="nulladdress"
@@ -108,7 +102,6 @@
                     <tr>
                         <th>Null Date of Birth</th>
                         <td class="text-right">{{statistics.nulldob}}</td>
-                        <!-- <td class="text-right">nulldob</td> -->
                         <td class="wd-60">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="nulldob"
@@ -120,7 +113,6 @@
                     <tr>
                         <th>Null Name</th>
                         <td class="text-right">{{statistics.nullname}}</td>
-                        <!-- <td class="text-right">nullname</td> -->
                         <td class="wd-60">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="nullname"
@@ -132,7 +124,6 @@
                     <tr>
                         <th>Null NIK</th>
                         <td class="text-right">{{statistics.nullnik}}</td>
-                        <!-- <td class="text-right">nullnik</td> -->
                         <td class="wd-60">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="nullnik"
@@ -144,7 +135,6 @@
                     <tr>
                         <th>Null NPWP</th>
                         <td class="text-right">{{statistics.nullnpwp}}</td>
-                        <!-- <td class="text-right">nullnpwp</td> -->
                         <td class="wd-60">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="nullnpwp"
@@ -156,7 +146,6 @@
                     <tr>
                         <th>Null Place of Birth</th>
                         <td class="text-right">{{statistics.nullpob}}</td>
-                        <!-- <td class="text-right">nullpob</td> -->
                         <td class="wd-60">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="nullpob"
@@ -168,7 +157,6 @@
                     <tr>
                         <th>Total</th>
                         <td class="text-right">{{statistics.total}}</td>
-                        <!-- <td class="text-right">total</td> -->
                         <td></td>
                     </tr>
                 </table>
@@ -176,6 +164,17 @@
             <div class="card-footer text-right">
                 <button class="btn btn-sm btn-primary pd-y-2" ng-click="exportFile()">Export File</button>
             </div>
+        </div>
+    </div>
+</div>
+<div class="card mg-t-10">
+    <div class="card-header pd-t-20 pd-b-0 bd-b-0">
+        <h6>List Files</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-dashboard mg-t-10 mg-b-0" datatable="" dt-options="dtOptions"
+                dt-columns="dtColumns" dt-instance="dtInstance"></table>
         </div>
     </div>
 </div>

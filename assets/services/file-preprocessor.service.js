@@ -42,11 +42,12 @@
         }
 
         /**
-         * Check export invalid.
-         * @param {String} id - id file.
+         * Export file invalid data.
+         * @param {String} id - Id of file.
+         * @param {Array} exportType - Array strings of type export.
          */
-        function exportInvalid(id) {
-            return $http.get(`${url}/prefile/${id}/exportInvalid`);
+        function exportInvalid(id, exportType) {
+            return $http.post(`${url}/file/${id}/exportInvalid`, exportType, { responseType: 'arraybuffer' });
         }
     }
 })();
