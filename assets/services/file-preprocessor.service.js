@@ -47,7 +47,7 @@
          * @param {Array} exportType - Array strings of type export.
          */
         function exportInvalid(id, exportType) {
-            return $http.post(`${url}/file/${id}/exportInvalid`, exportType, { responseType: 'arraybuffer' });
+            return $http.post(`${url}/prefile/${id}/exportInvalid`, exportType, { responseType: 'arraybuffer' });
         }
     }
 })();
