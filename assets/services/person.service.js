@@ -12,6 +12,7 @@
         this.merge = merge;
         this.findExactPerson = findExactPerson;
         this.similarity = similarity;
+        this.uploadMasterFile = uploadMasterFile;
 
         const url = CONFIG.serviceAddress;
 
@@ -79,6 +80,19 @@
             };
             console.log(data, dataMaster);
             return $http.post(`${url}/person/similarity`, [_data, _dataMaster]);
+        }
+
+        /**
+         * Upload master file.
+         * @param {File} file - File xls|csv|txt|etc.
+         */
+        function uploadMasterFile(file) {
+            let fd = new FormData();
+            fd.append('file', file);
+            return $http.post(`${url}/person/master`, fd, {
+                transformResponse: angular.identity,
+                headers: { 'Content-Type': undefined }
+            });
         }
     }
 })();

@@ -10,13 +10,18 @@
             controller: _
         });
 
-    _.$inject = ['$scope'];
-    function _($scope) {
+    _.$inject = ['$scope', 'PersonService', 'UtilService'];
+    function _($scope, PersonService, UtilService) {
         let $ctrl = this;
         $ctrl.$onInit = () => { };
 
         $scope.upload = () => {
-            console.log($scope.files);
-        }
+            UtilService.trLoadingProcess(async () => {
+                for (const i in $scope.files) {
+                    let res = await PersonService.uploadMasterFile($scope.files[i]);
+                }
+                alert('Upload Master File Success');
+            });
+        };
     }
 })();
