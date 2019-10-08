@@ -34,11 +34,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="file in files">
+                                <tr ng-repeat="file in files track by $index">
                                     <td>{{file.name}}</td>
                                     <td class="tx-right">{{file.size}}</td>
                                     <td class="tx-right">
-                                        <button class="btn btn-primary tr-btn-table">Show Statistic</button>
+                                        <button class="btn btn-primary tr-btn-table"
+                                            ng-click="showStatistic($index)">Show Statistic</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -48,11 +49,11 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6" ng-if="statistics">
         <div class="card">
             <div class="card-header d-sm-flex align-items-start justify-content-between bd-b-0">
                 <h6 class="lh-5 mg-b-0">File Statistic</h6>
-                <span class="tx-13 link-03">File Name: {{filename}}</span>
+                <span class="tx-13 link-03">File Name: {{statistics.resUploadFile.filename}}</span>
             </div>
             <div class="table-responsive">
                 <table class="table table-dashboard mg-b-0 tr-fixed-table">
@@ -70,8 +71,8 @@
                     </tr>
                     <tr>
                         <th>Invalid NIK</th>
-                        <!-- <td class="text-right">{{statistics.invalidNik}}</td> -->
-                        <td class="text-right">invalidNik</td>
+                        <td class="text-right">{{statistics.invalidNik}}</td>
+                        <!-- <td class="text-right">invalidNik</td> -->
                         <td class="wd-60">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="invalidNik"
@@ -82,8 +83,8 @@
                     </tr>
                     <tr>
                         <th>Invalid NPWP</th>
-                        <!-- <td class="text-right">{{statistics.invalidNpwp}}</td> -->
-                        <td class="text-right">invalidNpwp</td>
+                        <td class="text-right">{{statistics.invalidNpwp}}</td>
+                        <!-- <td class="text-right">invalidNpwp</td> -->
                         <td class="wd-60">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="invalidNpwp"
@@ -94,8 +95,8 @@
                     </tr>
                     <tr>
                         <th>Null Address</th>
-                        <!-- <td class="text-right">{{statistics.nulladdress}}</td> -->
-                        <td class="text-right">nulladdress</td>
+                        <td class="text-right">{{statistics.nulladdress}}</td>
+                        <!-- <td class="text-right">nulladdress</td> -->
                         <td class="wd-60">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="nulladdress"
@@ -106,8 +107,8 @@
                     </tr>
                     <tr>
                         <th>Null Date of Birth</th>
-                        <!-- <td class="text-right">{{statistics.nulldob}}</td> -->
-                        <td class="text-right">nulldob</td>
+                        <td class="text-right">{{statistics.nulldob}}</td>
+                        <!-- <td class="text-right">nulldob</td> -->
                         <td class="wd-60">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="nulldob"
@@ -118,8 +119,8 @@
                     </tr>
                     <tr>
                         <th>Null Name</th>
-                        <!-- <td class="text-right">{{statistics.nullname}}</td> -->
-                        <td class="text-right">nullname</td>
+                        <td class="text-right">{{statistics.nullname}}</td>
+                        <!-- <td class="text-right">nullname</td> -->
                         <td class="wd-60">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="nullname"
@@ -130,8 +131,8 @@
                     </tr>
                     <tr>
                         <th>Null NIK</th>
-                        <!-- <td class="text-right">{{statistics.nullnik}}</td> -->
-                        <td class="text-right">nullnik</td>
+                        <td class="text-right">{{statistics.nullnik}}</td>
+                        <!-- <td class="text-right">nullnik</td> -->
                         <td class="wd-60">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="nullnik"
@@ -142,8 +143,8 @@
                     </tr>
                     <tr>
                         <th>Null NPWP</th>
-                        <!-- <td class="text-right">{{statistics.nullnpwp}}</td> -->
-                        <td class="text-right">nullnpwp</td>
+                        <td class="text-right">{{statistics.nullnpwp}}</td>
+                        <!-- <td class="text-right">nullnpwp</td> -->
                         <td class="wd-60">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="nullnpwp"
@@ -154,8 +155,8 @@
                     </tr>
                     <tr>
                         <th>Null Place of Birth</th>
-                        <!-- <td class="text-right">{{statistics.nullpob}}</td> -->
-                        <td class="text-right">nullpob</td>
+                        <td class="text-right">{{statistics.nullpob}}</td>
+                        <!-- <td class="text-right">nullpob</td> -->
                         <td class="wd-60">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="nullpob"
@@ -166,8 +167,8 @@
                     </tr>
                     <tr>
                         <th>Total</th>
-                        <!-- <td class="text-right">{{statistics.total}}</td> -->
-                        <td class="text-right">total</td>
+                        <td class="text-right">{{statistics.total}}</td>
+                        <!-- <td class="text-right">total</td> -->
                         <td></td>
                     </tr>
                 </table>

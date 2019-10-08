@@ -2,13 +2,13 @@
     'use strict';
 
     window.app
-        .service('PrefileService', PrefileService);
+        .service('FilePreprocessorService', FilePreprocessorService);
 
-    PrefileService.$inject = [''];
-    function PrefileService() {
+    FilePreprocessorService.$inject = ['$http', 'CONFIG'];
+    function FilePreprocessorService($http, CONFIG) {
         this.uploadFile = uploadFile;
         this.urlSearch = urlSearch;
-        this.statistics = statistics;
+        this.retrieveStatistics = retrieveStatistics;
         this.exportInvalid = exportInvalid;
 
         const url = CONFIG.serviceAddress;
@@ -37,7 +37,7 @@
          * Get statistics.
          * @param {String} id - Id file.
          */
-        function statistics(id) {
+        function retrieveStatistics(id) {
             return $http.get(`${url}/prefile/${id}/statistics`);
         }
 

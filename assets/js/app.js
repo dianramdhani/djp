@@ -33,7 +33,7 @@ require('../services/person.service');
 require('../services/excel-rule.service');
 require('../services/normalization-rule.service');
 require('../services/user.service');
-require('../services/prefile.service');
+require('../services/file-preprocessor.service');
 
 // DIRECTIVES
 require('../directives/tr-files.directive');
