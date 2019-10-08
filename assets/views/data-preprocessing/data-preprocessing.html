@@ -25,23 +25,24 @@
                 <div class="pd-t-15" ng-if="files">
                     <label class="tx-gray-500">List Files</label>
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table mg-b-0">
                             <thead>
                                 <tr>
                                     <th>Name</th>
                                     <th class="tx-right">Size File (Byte)</th>
+                                    <th class="wd-150"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="file in files">
                                     <td>{{file.name}}</td>
                                     <td class="tx-right">{{file.size}}</td>
+                                    <td class="tx-right">
+                                        <button class="btn btn-primary tr-btn-table">Show Statistic</button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                    <div class="text-right">
-                        <button class="btn btn-primary tr-btn-form pd-t-15" ng-click="upload()">Upload</button>
                     </div>
                 </div>
             </div>
