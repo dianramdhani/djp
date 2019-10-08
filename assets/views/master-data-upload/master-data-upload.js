@@ -18,7 +18,7 @@
         $scope.upload = () => {
             UtilService.trLoadingProcess(async () => {
                 for (const i in $scope.files) {
-                    let res = await PersonService.uploadMasterFile($scope.files[i]);
+                    let res = await PersonService.uploadFile($scope.files[i]);
                 }
                 alert('Upload Master File Success');
             });
