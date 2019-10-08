@@ -13,14 +13,17 @@
     _.$inject = ['$scope'];
     function _($scope) {
         let $ctrl = this;
-        $ctrl.$onInit = () => { };
+        $ctrl.$onInit = () => {
+            // To export array to export file.
+            $scope.exportType = [];
+        };
 
         $scope.upload = () => {
             console.log($scope.files);
         }
 
         $scope.exportFile = () => {
-            console.log('test export file');
+            console.log('test export file', $scope.exportType);
         }
     }
 })();

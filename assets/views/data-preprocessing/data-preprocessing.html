@@ -57,6 +57,18 @@
             <div class="table-responsive">
                 <table class="table table-dashboard mg-b-0 tr-fixed-table">
                     <tr>
+                        <th>Valid Data</th>
+                        <!-- <td class="text-right">{{statistics.invalidNik}}</td> -->
+                        <td class="text-right">validData</td>
+                        <td class="wd-60">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="validData"
+                                    tr-statistics-selected="exportType">
+                                <label class="custom-control-label" for="validData"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
                         <th>Invalid NIK</th>
                         <!-- <td class="text-right">{{statistics.invalidNik}}</td> -->
                         <td class="text-right">invalidNik</td>
